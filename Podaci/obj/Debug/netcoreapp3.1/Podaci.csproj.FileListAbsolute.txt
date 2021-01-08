@@ -1,0 +1,12 @@
+D:\0FIT\RS1\eKino\Podaci\bin\Debug\netcoreapp3.1\Podaci.deps.json
+D:\0FIT\RS1\eKino\Podaci\bin\Debug\netcoreapp3.1\Podaci.runtimeconfig.json
+D:\0FIT\RS1\eKino\Podaci\bin\Debug\netcoreapp3.1\Podaci.runtimeconfig.dev.json
+D:\0FIT\RS1\eKino\Podaci\bin\Debug\netcoreapp3.1\Podaci.dll
+D:\0FIT\RS1\eKino\Podaci\bin\Debug\netcoreapp3.1\Podaci.pdb
+D:\0FIT\RS1\eKino\Podaci\obj\Debug\netcoreapp3.1\Podaci.csprojAssemblyReference.cache
+D:\0FIT\RS1\eKino\Podaci\obj\Debug\netcoreapp3.1\Podaci.AssemblyInfoInputs.cache
+D:\0FIT\RS1\eKino\Podaci\obj\Debug\netcoreapp3.1\Podaci.AssemblyInfo.cs
+D:\0FIT\RS1\eKino\Podaci\obj\Debug\netcoreapp3.1\Podaci.csproj.CoreCompileInputs.cache
+D:\0FIT\RS1\eKino\Podaci\obj\Debug\netcoreapp3.1\Podaci.dll
+D:\0FIT\RS1\eKino\Podaci\obj\Debug\netcoreapp3.1\Podaci.pdb
+D:\0FIT\RS1\eKino\Podaci\obj\Debug\netcoreapp3.1\Podaci.genruntimeconfig.cache
