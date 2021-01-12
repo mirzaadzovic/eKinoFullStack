@@ -25,37 +25,34 @@ namespace eKino.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
-        public IActionResult DodajAdmina(string username, string password)
-        {
-            Administrator korisnik = new Administrator()
-            {
-                Email = "sandzak.bob@gmail.com",
-                UserName = username,
-                EmailConfirmed = true
-            };
+        //public IActionResult DodajAdmina(string username, string password)
+        //{
+        //    Administrator korisnik = new Administrator()
+        //    {
+        //        Email = "sandzak.bob@gmail.com",
+        //        UserName = username,
+        //        EmailConfirmed = true
+        //    };
 
-            IdentityResult result = _userManager.CreateAsync(korisnik, password).Result;
-            if(!result.Succeeded)
-            {
-                return RedirectToPage("/Account/Login", new { area = "Identity" });
-            }
+        //    IdentityResult result = _userManager.CreateAsync(korisnik, password).Result;
+        //    if(!result.Succeeded)
+        //    {
+        //        return RedirectToPage("/Account/Login", new { area = "Identity" });
+        //    }
 
-            //Administrator admin = new Administrator()
-            //{
-            //    Korisnik = korisnik
-            //};
-            //_db.Administrator.Add(admin);
-            //_db.SaveChanges();
+        //    //Administrator admin = new Administrator()
+        //    //{
+        //    //    Korisnik = korisnik
+        //    //};
+        //    //_db.Administrator.Add(admin);
+        //    //_db.SaveChanges();
 
-            return View();
-        }
+        //    return View();
+        //}
         public IActionResult Index()
         {
-            //var user = _userManager.GetUserAsync(User).Result;
-
-            //if (user == null/*&& user.Posjetilac!=null*/)
-            //    return RedirectToPage("/Account/Login", new { area = "Identity" });
-            return View();
+            HomeIndexVM m = new HomeIndexVM();
+            return View(m);
         }
 
         [Authorize]

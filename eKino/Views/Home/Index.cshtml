@@ -1,8 +1,36 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model HomeIndexVM
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div id="komponente">
+    <div id="navigacija"></div>
+    <div class="pregled-ponude">
+        <div class="pregled-ponude-dani">
+            @foreach (var p in Model.Dani)
+            {
+                if (p.Value == 0)
+                {
+                    <a class="dan" id="dan-active" onclick="ucitajPonudu(@p.Value)" style="color:#f4eade">@p.DanUSedmici</a>
+                }
+                else
+                {
+                    <a class="dan" onclick="ucitajPonudu(@p.Value)" style="color:#f4eade">@p.DanUSedmici</a>
+                }
+                
+            }
+        </div>
+        <div id="filmovi-lista">
+        </div>
+    </div>
 </div>
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<script>
+    ucitajPonudu(0);
+    function ucitajPonudu(dan) {
+        let url = "/Ponuda/Prikaz?dan=" + dan;
+        $.get(url, function (data) {
+            $("#filmovi-lista").html(data);
+        });
+    }
+</script>

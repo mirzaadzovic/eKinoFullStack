@@ -16,6 +16,12 @@ namespace eKino.Data
         public DbSet<Administrator> Administrator { get; set; }
         public DbSet<Moderator> Moderator { get; set; }
         public DbSet<Posjetilac> Posjetilac { get; set; }
+        public DbSet<Film> Film { get; set; }
+        public DbSet<Sala> Sala { get; set; }
+        public DbSet<Projekcija> Projekcija { get; set;}
+        public DbSet<Sjediste> Sjediste { get; set; }
+        public DbSet<Rezervacija> Rezervacija { get; set; }
+        public DbSet<TipRezervacije> TipRezervacije { get; set; }
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{

@@ -202,3 +202,4 @@ D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Accou
 D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Error.cshtml.g.cs
 D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
+D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Ponuda\Prikaz.cshtml.g.cs

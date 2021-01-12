@@ -81,7 +81,15 @@ namespace eKino.Areas.Identity.Pages.Account
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
                 var username = _userManager.FindByEmailAsync(Input.Email).Result;
-                var result = await _signInManager.PasswordSignInAsync(username.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                if (username == null)
+                {
+                    username = new Korisnik();
+                    username.UserName = "";
+                }
+
+
+                 var result = await _signInManager.PasswordSignInAsync(username.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
