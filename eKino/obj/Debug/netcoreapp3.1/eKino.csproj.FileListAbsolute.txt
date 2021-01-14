@@ -203,3 +203,9 @@ D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Error
 D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
 D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Ponuda\Prikaz.cshtml.g.cs
+D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
+D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutAdmin.cshtml.g.cs
+D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Projekcije\Dodaj.cshtml.g.cs
+D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Projekcije\Snimi.cshtml.g.cs
+D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Projekcije\Uredi.cshtml.g.cs
+D:\0FIT\RS1\eKino\eKino\bin\Debug\netcoreapp3.1\System.Net.WebSockets.WebSocketProtocol.dll

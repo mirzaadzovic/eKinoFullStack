@@ -1,11 +1,12 @@
 ﻿@{
     Layout = "/Views/Shared/_Layout.cshtml";
 }
+
 <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-<link rel="stylesheet" href="./css/site.css"/>
+
 <style>
     * {
-        overflow: hidden;
+        overflow-x: hidden;
     }
 
     #komponente {
@@ -14,4 +15,14 @@
    #render{
        background: white;
    }
+    header, .meni, .meni > a, #login-navbar, #login-navbar a, #logout {
+        color: white;
+        background-color: #1b6ec2;
+    }
+    .meni > a:hover {
+        background-color: white;
+        color: #1b6ec2;
+        transform: none;
+    }
+
 </style>

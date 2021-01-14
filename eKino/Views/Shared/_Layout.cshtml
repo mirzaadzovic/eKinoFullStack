@@ -1,9 +1,10 @@
-﻿@using Podaci.EntityModels
+﻿<!DOCTYPE html>
+@using Podaci.EntityModels
 @using Microsoft.AspNetCore.Identity;
 @inject SignInManager<Korisnik> SignInManager
 @inject UserManager<Korisnik> UserManager
 
-<!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -16,35 +17,33 @@
 <body>
     <header>
         @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">*@
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">*@
 
         <div class="meni">
-            <a href="/Home/Index" class="navbar-element" id="navbar-active">POČETNA</a>
-            <a href="#" class="navbar-element">FILMOVI</a>
-            <a href="#" class="navbar-element">NAJAVE</a>
-            <a href="#" class="navbar-element">VIJESTI</a>
-            <a href="#" class="navbar-element">O NAMA</a>
-            <a href="#" class="navbar-element">KONTAKT</a>
-            @if(SignInManager.IsSignedIn(User) && !UserManager.GetUserAsync(User).Result.IsPosjetilac)
+            <a href="/Home/Index" class="navbar-element" @*id="navbar-active"*@>POČETNA</a>
+            <a href="#" >FILMOVI</a>
+            <a href="#">NAJAVE</a>
+            <a href="#">VIJESTI</a>
+            <a href="#">KONTAKT</a>
+            @if (SignInManager.IsSignedIn(User) && !UserManager.GetUserAsync(User).Result.IsPosjetilac)
             {
-               <a href="#">ADMIN</a>
+                <a href="/Admin/Index">ADMIN</a>
             }
 
         </div>
         <partial name="_LoginPartial" />
         @*</div>
-                </div>
-            </nav>*@
+            </div>
+        </nav>*@
     </header>
+
     <div id="komponente">
-        <main role="main" class="pb-3" id="render">
             @RenderBody()
-        </main>
     </div>
 
     @*<footer class="border-top footer text-muted">

@@ -23,9 +23,10 @@ namespace eKino.Controllers
         }
         public IActionResult Prikaz(int dan)
         {
-            DateTime d = new DateTime(2021, 1, 1);
-            int o = (int)(d.Date - DateTime.Today).TotalDays;
+            //DateTime d = new DateTime(2021, 1, 1);
+            //int o = (int)(d.Date - DateTime.Today).TotalDays;
             List<PonudaPrikazVM.Row> ponuda = _db.Projekcija
+                .Where(p=>p.Datum >= DateTime.Now)
                 .Select(p => new PonudaPrikazVM.Row()
                 {
                     ID = p.ID,
@@ -45,7 +46,8 @@ namespace eKino.Controllers
             var termini = new List<PonudaPrikazVM.Termin>();
             foreach(var p in ponuda)
             {
-                if ((int)(p.Datum - DateTime.Today).TotalDays == dan)
+                if ((int)(p.Datum - DateTime.Today).TotalDays == dan &&
+                    p.Datum > DateTime.Now)
                 {
                 var t = new PonudaPrikazVM.Termin();
                 t.FilmID = p.FilmID;
@@ -55,7 +57,8 @@ namespace eKino.Controllers
             }
 
             ponuda = ponuda
-                .Where(p => (int)(p.Datum.Date - DateTime.Today).TotalDays == dan)
+                .Where(p => (int)(p.Datum.Date - DateTime.Today).TotalDays == dan && //gleda razliku između danas i datuma projekcije
+                p.Datum > DateTime.Now) //gleda je li prošlo to vrijeme
                 .ToList();
 
             ponuda = ponuda.GroupBy(x=>x.FilmID).Select(x => x.First()).ToList();
