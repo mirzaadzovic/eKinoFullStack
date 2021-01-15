@@ -24,13 +24,18 @@
         </div>
     </div>
 </div>
-<script src="~/lib/jquery/dist/jquery.js"></script>
+
 <script>
     ucitajPonudu(0);
+
+    //Funkcije za ajax brisanje i ucitavanje
     function ucitajPonudu(dan) {
         let url = "/Ponuda/Prikaz?dan=" + dan;
         $.get(url, function (data) {
             $("#filmovi-lista").html(data);
         });
     }
+
+
+
 </script>

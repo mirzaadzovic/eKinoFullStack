@@ -1,42 +1,59 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿
 @{
-    ViewData["Title"] = "Uredi projekcije";
-    Layout = "_LayoutAdmin";
+    ViewData["Title"] = "Uredi projekciju";
+ Layout = "_LayoutAdmin";
 }
 @model ProjekcijeUrediVM
-<div class="pregled-ponude">
-    @foreach (var f in Model.Projekcije)
-    {
-        <div class="film-ponuda">
-            <div class="film-ponuda-desno">
-                <div class="film-ponuda-slika">
-                    <img src=@f.SlikaUrl />
-                </div>
-                <div class="film-ponuda-podaci">
-                    <div>
-                        <h2>@f.Film</h2>
-                        <p>@f.Cijena</p>
-                        <p>Trajanje: @f.Trajanje min</p>
-                    </div>
-                    <div class="film-ponuda-opsirnije">
-                        <h3>Covid19 mjere: @f.Covid19 </h3>
-                    </div>
-                </div>
+
+<form asp-action="SnimiPromjene" asp-controller="Projekcije">
+    <div id="zakazivanje-container-slika">
+        <img src="@Model.SlikaUrl" />
+        <br />
+        <h2>@Model.FilmIme</h2>
+    </div>
+    <div id="zakazivanje-container-opcije">
+        <div>
+            <div class="zakazivanje-komponenta">
+                <label>Film</label>
+                <br />
+
+                <input value="@Model.FilmIme" disabled />
+                <input hidden asp-for="ProjekcijaID"/>
             </div>
-            <div class="film-ponuda-lijevo">
-                <div class="film-ponuda-termini">
-                    <h3>Sala @f.Sala</h3>
-                    <p>Datum: @f.Datum.ToString("d.M.yyyy")</p>
-                    <p>Termin: @f.Vrijeme</p>
-                </div>
+            <br />
+            <div class="zakazivanje-komponenta">
+                <label>Vrijeme</label> <br /><input type="time" asp-for="Vrijeme" />
+                <span asp-validation-for="Vrijeme" class="text-danger"></span>
             </div>
-            <div class="film-ponuda-rezervisi">
-                <button style="right: 100px">Uredi</button>
-                <button>Obriši</button>
+            <div class="zakazivanje-komponenta">
+                <select asp-for="SalaID" asp-items="Model.Sale">
+
+                </select>
+            </div>
+            <div class="zakazivanje-komponenta" style="margin-top: 60px">
+                <input type="checkbox" asp-for="Covid19" /> COVID-19 mjere
             </div>
         </div>
-    }
-</div>
+
+        <div class="zakazivanje-komponenta">
+            <label id="zakazivanje-datum-od">Datum</label>
+            <br />
+            <input id="datumOdabir" type="date" asp-for="Datum" />
+            
+            <br/>
+            <label>Cijena</label>
+            <br />
+            <input type="text" asp-for="Cijena" />
+            
+            <div class="zakazivanje-komponenta" style="margin-top: 70px">
+                <button type="submit" id="film-zakazi-btn">Sačuvaj promjene</button>
+            </div>
+        </div>
+
        
+    </div>
+</form>
+
+
+
+

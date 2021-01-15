@@ -4,13 +4,13 @@
 
 var connection = new signalR.HubConnectionBuilder().withUrl("/notifikacijahub").build();
 
-connection.on("prijemNotifikacije", function (user, message) {
+connection.on("prijemNotifikacije", function (message) {
     let div = document.createElement("div");
     div.className = "notifikacija-alert";
     $("body").append(div);
 
     let notifikacija = $(".notifikacija-alert");    
-    notifikacija.html(user + message);
+    notifikacija.html(message);
     notifikacija.fadeIn();
     notifikacija.delay(5000).fadeOut(300);
 

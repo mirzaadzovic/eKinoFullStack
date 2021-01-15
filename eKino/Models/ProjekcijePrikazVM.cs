@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace eKino.Models
 {
-    public class ProjekcijeUrediVM
+    public class ProjekcijePrikazVM
     {
         public class Row
         {

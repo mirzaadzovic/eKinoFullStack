@@ -12,6 +12,8 @@
     <title>@ViewData["Title"] - eKino</title>
     <link rel="stylesheet" href="~/css/style.css" />
     <link rel="stylesheet" href="~/css/admin.css" />
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <header>
@@ -48,7 +50,7 @@
                 <div class="admin-izbornik-stavka">
                     <a>Upravljanje projekcijama</a>
                     <div class="admin-podizbornik">
-                        <a href="/Projekcije/Uredi">Uredi projekciju</a>
+                        <a href="/Projekcije/Prikaz">Uredi projekciju</a>
                         <a href="/Projekcije/Dodaj">Dodaj projekciju</a>
                     </div>
                 </div>
@@ -87,8 +89,7 @@
                 &copy; 2021 - eKino - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
             </div>
         </footer>*@
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
     <script src="~/lib/signalr/dist/browser/signalr.js"></script>

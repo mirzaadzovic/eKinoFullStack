@@ -5,11 +5,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.SignalR;
+using Microsoft.EntityFrameworkCore;
 using Podaci.EntityModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using eKino.Helper_Metode;
 
 namespace eKino.Controllers
 {
@@ -63,10 +65,11 @@ namespace eKino.Controllers
             
             return View(model);
         }
-        public IActionResult Uredi()
+        public IActionResult Prikaz()
         {
-            List<ProjekcijeUrediVM.Row> projekcije = _db.Projekcija
-                .Select(p => new ProjekcijeUrediVM.Row()
+
+            List<ProjekcijePrikazVM.Row> projekcije = _db.Projekcija
+                .Select(p => new ProjekcijePrikazVM.Row()
                 {
                     ID=p.ID,
                     FilmID=p.FilmID,
@@ -82,9 +85,37 @@ namespace eKino.Controllers
                 .OrderByDescending(p=>p.Datum)
                 .ToList();
 
-            ProjekcijeUrediVM model = new ProjekcijeUrediVM()
+            ProjekcijePrikazVM model = new ProjekcijePrikazVM()
             {
                 Projekcije=projekcije
+            };
+            return View(model);
+        }
+        public IActionResult Uredi(int ID)
+        {
+            List<SelectListItem> sale = _db.Sala
+                .Select(s => new SelectListItem()
+                {
+                    Text = "Sala "+s.Oznaka,
+                    Value= s.ID.ToString()
+                })
+                .ToList();
+
+            Projekcija p = _db.Projekcija
+                .Find(ID);
+            p.Film = _db.Film.Find(p.FilmID);
+
+            ProjekcijeUrediVM model = new ProjekcijeUrediVM()
+            {
+                ProjekcijaID = ID,
+                FilmIme = p.Film.Naziv,
+                SlikaUrl = p.Film.SlikaUrl,
+                Datum = p.Datum,
+                Vrijeme = p.Datum,
+                Covid19 = p.Covid19,
+                Cijena = p.Cijena,
+                SalaID=p.SalaID,
+                Sale=sale
             };
             return View(model);
         }
@@ -104,9 +135,11 @@ namespace eKino.Controllers
             int BrojDana= int.Parse(model.MetodaZakazivanja);
             for (DateTime d = model.DatumOd; d.Date <= model.DatumDo; d = d.Date.AddDays(BrojDana))
             {
-                DateTime datumStari = d;
-                DateTime v = model.Vrijeme;
-                DateTime datum = new DateTime(datumStari.Year, datumStari.Month, datumStari.Day, v.Hour, v.Minute, 0);
+                DateTime datum = HelperMetode.SpojiDatumIVrijeme(d, model.Vrijeme);
+
+                //DateTime datumStari = d;
+                //DateTime v = model.Vrijeme;
+                //DateTime datum = new DateTime(datumStari.Year, datumStari.Month, datumStari.Day, v.Hour, v.Minute, 0);
 
                 foreach (var s in model.Sale)
                 {
@@ -126,11 +159,34 @@ namespace eKino.Controllers
             }
             _db.SaveChanges();
 
-            _hubContext.Clients.All.SendAsync("prijemNotifikacije",
-                _userManager.GetUserAsync(User).Result.UserName,
-                " je dodao projekciju za film " + _db.Film.Find(model.FilmId).Naziv);
+            string poruka = "Dodana projekcija!";
+            _hubContext.Clients.All.SendAsync("prijemNotifikacije", poruka);
 
             return View();
+        }
+        public IActionResult SnimiPromjene(ProjekcijeUrediVM model)
+        {
+            Projekcija p = _db.Projekcija.Find(model.ProjekcijaID);
+
+            p.Datum = HelperMetode.SpojiDatumIVrijeme(model.Datum, model.Vrijeme);
+            p.Cijena = model.Cijena;
+            p.Covid19 = model.Covid19;
+            p.SalaID = model.SalaID;
+
+            _db.SaveChanges();
+
+            return Redirect("/Projekcije/Prikaz");
+        }
+        public IActionResult Obrisi (int ID)
+        {
+            Projekcija projekcija = _db.Projekcija.Find(ID);
+            _db.Remove(projekcija);
+            _db.SaveChanges();
+
+            string poruka = "Promijenjen termin projekcije!";
+            _hubContext.Clients.All.SendAsync("prijemNotifikacije", poruka);
+
+            return Redirect("/Projekcije/Prikaz");
         }
     }
 }

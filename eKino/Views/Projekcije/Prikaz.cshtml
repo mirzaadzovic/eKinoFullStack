@@ -2,53 +2,41 @@
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
+    ViewData["Title"] = "Uredi projekcije";
+    Layout = "_LayoutAdmin";
 }
-@model PonudaPrikazVM
-
-@if (Model.Ponuda.Count <= 0)
-{
-    <h3 id="prazan-dan">Nema zakazanih projekcija na odabrani dan!</h3>
-}
-else
-{
-    @foreach (var f in Model.Ponuda)
+@model ProjekcijePrikazVM
+<div class="pregled-ponude">
+    @foreach (var f in Model.Projekcije)
     {
         <div class="film-ponuda">
             <div class="film-ponuda-desno">
                 <div class="film-ponuda-slika">
-                    <img src=@f.SlikaUrl/>
+                    <img src=@f.SlikaUrl />
                 </div>
                 <div class="film-ponuda-podaci">
                     <div>
                         <h2>@f.Film</h2>
-                        <p>Godina: @f.Godina</p>
-                        <p>Reditelj: @f.Reditelj</p>
-                        <p>Uloge: @f.Glumci</p>
-                        <p>Žanr: @f.Zanr</p>
+                        <p>@f.Cijena</p>
                         <p>Trajanje: @f.Trajanje min</p>
                     </div>
                     <div class="film-ponuda-opsirnije">
-                        <a><h3>Opširnije...</h3></a>
+                        <h3>Covid19 mjere: @f.Covid19 </h3>
                     </div>
                 </div>
             </div>
             <div class="film-ponuda-lijevo">
                 <div class="film-ponuda-termini">
-                    <h3>@f.Datum.ToString("d.M.yyyy").</h3>
-                    @foreach (var t in Model.Termini)
-                    {
-                        if (t.FilmID ==f.FilmID)
-                        {
-                            <p>@t.Vrijeme</p>
-                        }
-
-                    }
+                    <h3>Sala @f.Sala</h3>
+                    <p>Datum: @f.Datum.ToString("d.M.yyyy")</p>
+                    <p>Termin: @f.Vrijeme</p>
                 </div>
             </div>
             <div class="film-ponuda-rezervisi">
-                <button>Kupi kartu</button>
+                <a href="/Projekcije/Uredi?ID=@f.ID" style="right: 100px">Uredi</a>
+                <a href="/Projekcije/Obrisi?ID=@f.ID">Obriši</a>
             </div>
         </div>
-
     }
-}
+</div>
+       
