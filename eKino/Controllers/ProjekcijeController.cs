@@ -1,8 +1,10 @@
 ﻿using eKino.Data;
+using eKino.Hubs;
 using eKino.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.SignalR;
 using Podaci.EntityModels;
 using System;
 using System.Collections.Generic;
@@ -16,11 +18,14 @@ namespace eKino.Controllers
         private readonly UserManager<Korisnik> _userManager;
         private readonly SignInManager<Korisnik> _signInManager;
         private ApplicationDbContext _db;
-        public ProjekcijeController(ApplicationDbContext db, UserManager<Korisnik> userManager, SignInManager<Korisnik> signInManager)
+        private IHubContext<NotifikacijaHub> _hubContext;
+        public ProjekcijeController(ApplicationDbContext db, UserManager<Korisnik> userManager, 
+            SignInManager<Korisnik> signInManager, IHubContext<NotifikacijaHub>  hubContext)
         {
             _db = db;
             _userManager = userManager;
             _signInManager = signInManager;
+            _hubContext = hubContext;
         }
         public IActionResult Dodaj(int ID)
         {
@@ -72,7 +77,7 @@ namespace eKino.Controllers
                     Cijena=p.Cijena.ToString()+" KM",
                     SlikaUrl=p.Film.SlikaUrl,
                     Covid19=p.Covid19 ? "DA" : "NE",
-                    Trajanje=p.Film.TrajanjeMinute.ToString() + " min"
+                    Trajanje=p.Film.TrajanjeMinute.ToString()
                 })
                 .OrderByDescending(p=>p.Datum)
                 .ToList();
@@ -87,7 +92,12 @@ namespace eKino.Controllers
         { 
             if(model.DatumOd>model.DatumDo || !ModelState.IsValid)
             {
-                ModelState.AddModelError("", "Pogrešan unos!");
+                _hubContext.Clients.User(_userManager
+                    .GetUserAsync(User).Result.Id)
+                    .SendAsync("prijemNotifikacije",
+               _userManager
+               .GetUserAsync(User).Result.UserName,
+               " je fulio unos ");
                 return Redirect("/Projekcije/Dodaj");
             }
 
@@ -115,6 +125,11 @@ namespace eKino.Controllers
                 }
             }
             _db.SaveChanges();
+
+            _hubContext.Clients.All.SendAsync("prijemNotifikacije",
+                _userManager.GetUserAsync(User).Result.UserName,
+                " je dodao projekciju za film " + _db.Film.Find(model.FilmId).Naziv);
+
             return View();
         }
     }

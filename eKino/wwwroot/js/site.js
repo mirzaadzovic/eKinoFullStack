@@ -3,6 +3,18 @@
 
 // Write your JavaScript code.
 
+//Header responsive slide
+$("#hamburger").click(function () {
+    $(".meni").slideToggle();
+});
+
+window.addEventListener("resize", () => {
+    if (window.innerWidth > 600)
+        document.querySelector(".meni").style.display = "flex";
+});
+
+
+
 const dani = document.getElementsByClassName("dan");
 for (let i = 0; i < dani.length; i++) {
     dani[i].addEventListener("click", (e) => {

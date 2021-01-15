@@ -1,0 +1,16 @@
+{
+  "name": "eKino",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://fitba2072@dev.azure.com/fitba2072/seminarski_rad/_git/webapp"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

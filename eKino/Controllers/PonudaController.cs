@@ -47,7 +47,7 @@ namespace eKino.Controllers
             foreach(var p in ponuda)
             {
                 if ((int)(p.Datum - DateTime.Today).TotalDays == dan &&
-                    p.Datum > DateTime.Now)
+                    /*p.Datum > DateTime.Now*/ DateTime.Now<p.Datum.AddMinutes(int.Parse(p.Trajanje)))
                 {
                 var t = new PonudaPrikazVM.Termin();
                 t.FilmID = p.FilmID;

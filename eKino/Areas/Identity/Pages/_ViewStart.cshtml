@@ -10,7 +10,10 @@
     }
 
     #komponente {
-        background: url("/img/background.jpg");
+        position: absolute;
+        top:56px;
+        background: white;
+        padding: 30px;
     }
    #render{
        background: white;
@@ -18,11 +21,21 @@
     header, .meni, .meni > a, #login-navbar, #login-navbar a, #logout {
         color: white;
         background-color: #1b6ec2;
+        display: flex;
     }
     .meni > a:hover {
         background-color: white;
         color: #1b6ec2;
         transform: none;
     }
-
+    #login-navbar{
+        order: 1;
+        text-align: center;
+    }
+    #login-navbar a{
+        width: 100px;
+    }
+    #logout{
+        text-align:left;
+    }
 </style>

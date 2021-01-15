@@ -20,6 +20,34 @@ body,
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
+.notifikacija-alert {
+    position: fixed;
+    width: 300px;
+    height: 20px;
+    padding: 10px;
+    background-color: lightgray;
+    color: black;
+    opacity: 0.7;
+    text-align: center;
+    font-size: 15px;
+    border: 1px solid darkgray;
+    border-radius: 6px;
+    box-shadow: 2px 10px 15px 5px rgba(0,0,0,0.16);
+    top: 70px;
+    right: 40px;
+    display: none;
+    z-index:10;
+    font-family: Arial;
+}
+.notifikacija-alert:hover{
+    opacity: 0.9;
+    transition: 0.3s;
+}
+
+#komponente{
+    position: absolute;
+    top: 26px;
+}
 
 
 ::selection {
@@ -38,6 +66,7 @@ header {
     left: 0;
     right: 0;
     z-index: 2;
+    min-width: 300px;
 }
 
 .meni {
@@ -48,7 +77,16 @@ header {
     transition: 0.3s;
     position: relative;
 }
-
+#hamburger {
+    color: #f4eade;
+    font-weight: bold;
+    font-size: 28px;
+    display: none;
+    position: fixed;
+    left: 30px;
+    top: 8px;
+    cursor: pointer;
+}
     .meni > a {
         text-decoration: none !important;
         font-size: 22px;
@@ -58,7 +96,9 @@ header {
         width: 100px;
         text-align: center;
     }
-
+.meni-hidden{
+    display: none;
+}
 #login-navbar {
     position: relative;
     display: flex;
@@ -73,11 +113,18 @@ header {
         text-decoration: none;
         padding: 5px;
         text-wrap: none;
+        width: 67px;
     }
 #logout{
     background: transparent;
     border: none;
     outline: none;
+    width: 50px;
+
+}
+#hamburger:hover, #login-navbar a:hover{
+    color: white;
+    transition: 0.2s;
 }
 
 .meni > a:hover {
@@ -95,7 +142,7 @@ header {
 }
 
 #navigacija {
-    height: 200px;
+    height: 300px;
     background-color: #acbebe;
     width: 800px;
     margin: 0 auto;
@@ -290,7 +337,8 @@ header {
     justify-content: center;
     position: sticky;
     top: 56px;
-    z-index: 2;
+    z-index: 1;
+    text-align: center;
 }
 
     .pregled-ponude-dani a, .pregled-ponude-dani a :not([href]) {
@@ -299,6 +347,7 @@ header {
         padding: 10px;
         color: #f4eade;
         background-color: #20232a;
+        width: 80px;
     }
 
         .pregled-ponude-dani a:hover {
@@ -491,20 +540,72 @@ header {
     margin-top: -10px;
 }
 @media only screen and (max-width: 800px) {
+    #komponente{
+        top: 23px;
+    }
     .meni a {
         font-size: 16px;
         width: 60px;
     }
-
-}
+    #login-navbar{
+        top: -5px;
+    }
+    .pregled-ponude-dani {
+        top: 52px;
+    }   
+ }
 @media only screen and (max-width: 600px) {
+    header {
+        flex-direction: column;
+    }
 
-    .pregled-ponude {
+    #login-navbar {
+        order: -1;
+        align-self: flex-end;
+        right: 10px;
+    }
+
+    .meni {
+        flex-direction: column;
+        align-items: center;
+        display: none;
+    }
+
+        .meni > a {
+            font-size: 18px;
+            padding: 10px;
+            width: 100%;
+        }
+
+    #hamburger {
+        display: block;
+    }
+
+    .pregled-ponude, #navigacija {
         width: 600px;
     }
+
+    .pregled-ponude-dani {
+        width: 100%;
+        top: 50px;
+        justify-content: space-between;
+        text-align: center;
+    }
+
+        .pregled-ponude-dani a {
+            font-size: 15px;
+            width: 100%;
+        }
 
     .film-ponuda-podaci p,
     .film-ponuda-termini p {
         font-size: 15px;
     }
 }
+ @media only screen and (max-width: 300px) {
+
+    .meni {
+        align-items: flex-end;
+    }
+}
+
