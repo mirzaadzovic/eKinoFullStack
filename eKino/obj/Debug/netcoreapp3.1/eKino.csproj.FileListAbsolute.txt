@@ -213,3 +213,5 @@ D:\0FIT\RS1\eKino\eKino\bin\Debug\netcoreapp3.1\package.json
 D:\0FIT\RS1\eKino\eKino\bin\Debug\netcoreapp3.1\libman.json
 D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Projekcije\Prikaz.cshtml.g.cs
 D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Projekcije\Uredi.cshtml.g.cs
+D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Filmovi\Dodaj.cshtml.g.cs
+D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Filmovi\Prikaz.cshtml.g.cs

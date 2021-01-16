@@ -7,7 +7,7 @@
 header{
     z-index: 3;
 }
-#lijevo {
+.lijevo {
     position: fixed;
     z-index: 2;
     top:56px;
@@ -21,7 +21,7 @@ header{
     --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
-#lijevo h1 {
+.lijevo h1 {
   padding: 20px;
 }
 .admin-izbornik {
@@ -74,7 +74,7 @@ header{
   background-color: #a01d26;
 }
 
-#desno {
+.desno {
     width: 80%;
     height: 100%;
     margin: 0 auto;
@@ -83,7 +83,7 @@ header{
     --font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
-#desno-container {
+.desno-container {
   box-sizing: border-box;
   padding: 40px 30px 30px 30px;
   background-color: #ffffff;
@@ -96,3 +96,110 @@ header{
   align-items: center;
   overflow: hidden;
 }
+
+/*INPUT FORME*/
+.input-div-container, #input-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+.input-slika {
+    margin: 0 auto;
+    height: 300px;
+    width: 200px;
+    padding: 15px;
+}
+.input-slika img{
+    width: 100%;
+    height: 100%;
+}
+.input-div {
+    width: 60%;
+    padding: 15px 10px;
+    display: block;
+    margin: 0 auto;
+}
+.input-label {
+    font-size: 14px;
+    color: #20232a;
+    padding: 5px;
+}
+.input-polje {
+    width: 100%;
+    min-width: 250px;
+    border: none;
+    border-bottom: 3px solid #20232a;
+    background-color: white;
+    padding: 10px;
+    font-size: 16px;
+    display: block;
+    outline: none;
+}
+.input-polje:focus {
+    transition: 0.4s;
+    background-color: #20232a;
+    text-align: center;
+    border-radius: 20px;
+    color: white !important;
+}
+.input-submit {
+    background-color: #20232a;
+    width: 100%;
+    border-radius: 6px;
+    padding: 5px;
+    color: white;
+    outline: none;
+    font-size: 18px;
+}
+.input-textbox {
+    resize: none;
+    width: 100%;
+    height: 100px;
+    padding: 5px;
+    font-size: 16px;
+    border: none;
+    border-radius: 2px;
+    border-bottom: 3px solid #20232a;
+    background-color: whitesmoke;
+}
+.input-textbox:focus {
+    background-color: #20232a;
+    color: white;
+    transition: 0.3s;
+}
+
+/*FILMOVI PRIKAZ*/
+.filmovi-container{
+    width: 100%;
+}
+.filmovi-container > div{
+}
+.film-naslov{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+film-podnaslov{
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.film-prikaz {
+    width: 100%;
+    padding: 15px;
+    border-bottom: 3px solid gray;
+    display: flex;
+    flex-direction: column;
+}
+div.film-prikaz-gore, div.film-prikaz-dolje{
+    display: flex;
+    flex-direction: row;
+    padding: 5px;
+    justify-content: center;
+}
+
+
+
+

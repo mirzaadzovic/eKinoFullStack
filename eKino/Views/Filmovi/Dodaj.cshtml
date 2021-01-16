@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewData["Title"] = "Dodaj film";
+    Layout = "_LayoutAdmin";
+}
+@model FilmoviDodajVM
+<div class="input-div-container">
+    <form id="input-form" asp-action="Snimi" asp-controller="Filmovi">
+        <input hidden asp-for="FilmID" />
+        <div class="input-slika">
+            @if (Model.FilmID == 0)
+            {
+                <img src="https://gooloc.com/wp-content/uploads/vector/36/rnoquhaqlke.jpg" />
+            }
+            else
+            {
+                <img src="@Model.SlikaURL"/>
+            }
+        </div>
+        <div class="input-div">
+            <label class="input-label">Ime filma</label>
+            <input class="input-polje" type="text" placeholder="Ime filma" asp-for="FilmIme" autocomplete="off" />
+        </div>
+        <div class="input-div">
+            <label class="input-label">Slika (URL)</label>
+            <input type="text" class="input-polje" id="input-film-slika" placeholder="Slika (URL)" asp-for="SlikaURL" onchange="prikaziSliku()" autocomplete="off" />
+        </div>
+        <div class="input-div">
+            <label class="input-label">Godina</label>
+            <input type="text" class="input-polje" placeholder="Godina" asp-for="Godina" autocomplete="off" />
+        </div>
+        <div class="input-div">
+            <label class="input-label">Žanr</label>
+            <input type="text" class="input-polje" placeholder="Žanr" asp-for="Zanr" />
+        </div>
+        <div class="input-div">
+            <label class="input-label">Reditelj</label>
+            <input type="text" class="input-polje" placeholder="Reditelj" asp-for="Reditelj" autocomplete="off" />
+        </div>
+        <div class="input-div">
+            <label class="input-label">Glumci</label>
+            <input type="text" class="input-polje" placeholder="Glumci" asp-for="Glumci" autocomplete="off" />
+        </div>
+        <div class="input-div">
+            <label class="input-label">Trajanje (minute)</label>
+            <input type="text" class="input-polje" placeholder="Trajanje" asp-for="Trajanje" autocomplete="off" />
+        </div>
+        <div class="input-div">
+            <label class="input-label">Trailer (URL)</label>
+            <input type="text" class="input-polje" placeholder="Trailer (URL)" asp-for="TrailerURL" autocomplete="off" />
+        </div>
+        <div class="input-div">
+            <label class="input-label">Info</label>
+            <textarea cols="30" rows="5" asp-for="Info" class="input-textbox"></textarea>
+        </div>
+        <div class="input-div">
+            @if (Model.FilmID == 0)
+            {
+                <input class="input-submit" type="submit" value="Dodaj" />
+            }
+            else
+            {
+                <input class="input-submit" type="submit" value="Sačuvaj promjene" />
+            }
+        </div>
+    </form>
+</div>
+

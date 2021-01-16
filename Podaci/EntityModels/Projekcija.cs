@@ -14,6 +14,7 @@ namespace Podaci.EntityModels
         public DateTime Datum { get; set; }
         public Decimal Cijena { get; set; }
         public bool Covid19 { get; set; }
+       // public bool PremijernoPrikazana { get; set; }
         public string GetTermin()
         {
             return Datum.ToString("HH:mm");

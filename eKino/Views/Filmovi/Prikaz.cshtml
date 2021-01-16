@@ -1,0 +1,40 @@
+﻿
+@{
+    ViewData["Title"] = "Svi filmovi";
+    Layout = "_LayoutAdmin";
+}
+@model FilmoviPrikazVM
+<div class="filmovi-container">
+    @foreach (var f in Model.Filmovi)
+    {
+        <div class="film-prikaz">
+            <div class="film-naslov">
+                <h1>@f.FilmIme</h1> 
+                <p style="font-size: 25px">(@f.Godina)</p>
+            </div>
+            <div class="film-podnaslov">
+                <p>Trajanje: @f.Trajanje</p>
+                <p>Žanr: @f.Zanr</p>
+            </div>
+            <div .class="film-prikaz-gore">
+                <div><img src="@f.SlikaURL"/></div>
+                <div><iframe src="@f.TrailerURL"></iframe></div>
+            </div>
+            <div .class="film-prikaz-dolje">
+                <div>
+                    <p>Reditelj: @f.Reditelj</p>
+                    <p>Glumci: @f.Glumci</p>
+                </div>
+                <div>
+                    <h4>@f.Info</h4>
+                </div>
+            </div>
+            <div>
+                <a href="/Filmovi/Dodaj?ID=@f.FilmID">Uredi</a>
+                <a href="/Filmovi/Obrisi?ID=@f.FilmID">Obriši</a>
+            </div>
+        </div>
+    }
+
+</div>
+

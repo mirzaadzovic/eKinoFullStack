@@ -28,7 +28,7 @@
         <div class="meni">
             <a href="/Home/Index" class="navbar-element">POČETNA</a>
             <a href="#">FILMOVI</a>
-            <a href="#" ">NAJAVE</a>
+            <a href="#">NAJAVE</a>
             <a href="#">VIJESTI</a>
             <a href="#">KONTAKT</a>
             @if (SignInManager.IsSignedIn(User) && !UserManager.GetUserAsync(User).Result.IsPosjetilac)
@@ -44,27 +44,27 @@
             </nav>*@
     </header>
     <div id="komponente">
-        <div id="lijevo">
+        <div class="lijevo">
             <h1>Admin panel</h1>
             <div class="admin-izbornik">
                 <div class="admin-izbornik-stavka">
                     <a>Upravljanje projekcijama</a>
                     <div class="admin-podizbornik">
-                        <a href="/Projekcije/Prikaz">Uredi projekciju</a>
+                        <a href="/Projekcije/Prikaz">Sve projekcije</a>
                         <a href="/Projekcije/Dodaj">Dodaj projekciju</a>
                     </div>
                 </div>
                 <div class="admin-izbornik-stavka">
                     <a>Upravljanje filmovima</a>
                     <div class="admin-podizbornik">
-                        <a>Uredi</a>
-                        <a>Dodaj film</a>
+                        <a href="/Filmovi/Prikaz">Svi filmovi</a>
+                        <a href="/Filmovi/Dodaj">Dodaj film</a>
                     </div>
                 </div>
                 <div class="admin-izbornik-stavka">
                     <a>Upravljanje vijestima</a>
                     <div class="admin-podizbornik">
-                        <a>Uredi vijest</a>
+                        <a>Sve vijesti</a>
                         <a>Dodaj vijest</a>
                     </div>
                 </div>
@@ -73,10 +73,10 @@
                 </div>
             </div>
         </div>
-        <div id="desno">
-            <div id="desno-container">
+        <div class="desno">
+            <div class="desno-container">
                 <div><h2>@ViewData["Title"]</h2></div>
-                <div id="zakazivanje-container">
+                <div class="zakazivanje-container">
                     @RenderBody()
                 </div>
             </div>

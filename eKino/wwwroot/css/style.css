@@ -493,7 +493,7 @@ header {
     align-self: center;
 }
 
-#zakazivanje-container, #zakazivanje-container form{
+.zakazivanje-container, .zakazivanje-container form{
     box-sizing: border-box;
     padding: 40px 0px 0px 0px;
     color: #20232a;
