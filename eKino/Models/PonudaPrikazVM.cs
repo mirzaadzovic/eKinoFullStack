@@ -23,11 +23,13 @@ namespace eKino.Models
             public string SlikaUrl { get; set; }
             public byte[] Slika { get; set; }
             public string Sala { get; set; }
+            public string DanUSedmini { get; set; }
+            public decimal Cijena { get; set; }
         }
         public class Termin
         {
             public int FilmID { get; set; }
-            public string Vrijeme { get; set; }
+            public DateTime Vrijeme { get; set; }
         }
         public List<Termin> Termini { get; set; }
         public List<Row> Ponuda { get; set; }

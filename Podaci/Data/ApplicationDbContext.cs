@@ -9,6 +9,10 @@ namespace eKino.Data
 {
     public class ApplicationDbContext : IdentityDbContext<Korisnik>
     {
+        public ApplicationDbContext()
+        {
+        }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {

@@ -1,4 +1,5 @@
 ﻿using eKino.Data;
+using eKino.Helper_Metode;
 using eKino.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -39,7 +40,9 @@ namespace eKino.Controllers
                     Reditelj = p.Film.Reditelj,
                     SlikaUrl = p.Film.SlikaUrl,
                     Trajanje=p.Film.TrajanjeMinute.ToString(),
-                    Sala=p.Sala.Oznaka
+                    Sala=p.Sala.Oznaka,
+                    DanUSedmini=HelperMetode.DanUsedmiciBosanski(p.Datum),
+                    Cijena=p.Cijena
                 })
                 .ToList();
 
@@ -51,14 +54,14 @@ namespace eKino.Controllers
                 {
                 var t = new PonudaPrikazVM.Termin();
                 t.FilmID = p.FilmID;
-                t.Vrijeme = p.Datum.ToString("HH:mm");
+                t.Vrijeme = p.Datum;
                 termini.Add(t);
                 }
             }
 
             ponuda = ponuda
                 .Where(p => (int)(p.Datum.Date - DateTime.Today).TotalDays == dan && //gleda razliku između danas i datuma projekcije
-                p.Datum > DateTime.Now) //gleda je li prošlo to vrijeme
+                p.Datum.AddMinutes(int.Parse(p.Trajanje)) > DateTime.Now) //gleda je li prošlo to vrijeme
                 .ToList();
 
             ponuda = ponuda.GroupBy(x=>x.FilmID).Select(x => x.First()).ToList();

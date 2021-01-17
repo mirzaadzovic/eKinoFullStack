@@ -24,6 +24,41 @@ for (let i = 0; i < dani.length; i++) {
     });
 }
 
+//REZERVACIJA SJEDIŠTA PRIKAZ
+function rezervisiSjedista(ponuda) {
+    document.getElementById("shadow-box").style.zIndex = "3";
+    document.getElementById("shadow-box").style.height = "100%";
+    document.querySelector(".seats-container").style.opacity = "1";
+
+    prikaziSjedista(ponuda);
+}
+
+function rezervacijaZatvori() {
+    document.getElementById("shadow-box").style.zIndex = "-1";
+    document.getElementById("shadow-box").style.height = "0%";
+    document.querySelector(".seats-container").style.opacity = "0";
+}
+
+function prikaziSjedista(ponuda) {
+    let url = "/Sjedista/Rezervisi?Ponuda=" + ponuda;
+    let forma = $(".seats-container");
+
+    $.get(url, function (data) {
+        forma.html(data);
+
+        generisiRaspored(ponuda);
+
+    });
+}
+//generiše kvadratiće sjedišta asinhrono
+function generisiRaspored(id) {
+    var url = "/Sjedista/Prikaz?TerminID=" + id;
+    $.get(url, function (data) {
+        $("#seats-all").html(data);
+        //sjedista.js
+        inicijalizujSlobodnaSjedista();//ubacuje sjedišta u niz da bi im se dodali eventlisteneri u sjedista.js skripti
+    });
+}
 
 //Zakazivanje projekcija radio buttoni
 //const slika = document.querySelector("#zakazivanje-container-slika img");

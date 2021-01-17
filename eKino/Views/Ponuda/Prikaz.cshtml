@@ -39,14 +39,14 @@ else
                     {
                         if (t.FilmID ==f.FilmID)
                         {
-                            <p>@t.Vrijeme</p>
+                            <p>@t.Vrijeme.ToString("HH:mm")</p>
                         }
 
                     }
                 </div>
             </div>
             <div class="film-ponuda-rezervisi">
-                <button>Kupi kartu</button>
+                <button onclick="rezervisiSjedista(@f.ID)">Kupi kartu</button>
             </div>
         </div>
 

@@ -1,0 +1,202 @@
+﻿
+@{
+    ViewData["Title"] = "Rezervisi";
+}
+@model SjedistaRezervisiVM
+<div id="seats-container-x">
+    <img src="~/img/x-icon.png"
+         style="background: transparent; height: 25px"
+         onclick="rezervacijaZatvori()" />
+</div>
+<div style="
+            background-color: transparent;
+            color: #f4f4ef;
+            margin: 5px;
+            margin-top: 0px;
+            font-size: 30px;
+          ">
+    @Model.Film.Film
+</div>
+
+<div class="seats-container-gornji-div">
+    <div class="seats-container-slika"
+         style="background: transparent; margin-right: 30px">
+        <img height="170px"
+             ;
+             src="@Model.Film.SlikaUrl" />
+    </div>
+    <div class="seats-container-odabir">
+        <div class="seats-container-datum-rezervacije">
+            @Model.Film.DanUSedmini, @Model.Film.Datum.ToString("d.M.yyyy").
+            <br />
+            <label style="background: transparent; font-size: 18px">
+                Cijena karte:
+                <span id="cijena-karte" style="background: transparent">@Model.Film.Cijena</span>
+                KM
+            </label>
+        </div>
+        <label style="background: transparent">Odaberi termin</label>
+        <br />
+        <select id="selekcija" asp-for="TerminID" asp-items="Model.Termini" onchange="generisiRaspored(this.value)">
+        </select>
+        <br />
+        <label style="background: transparent">
+            Odabranih sjedišta:
+            <span id="ukupno-sjedista" style="background: transparent">0</span>
+        </label>
+    </div>
+</div>
+<div class="odabir-sjedista-legenda">
+    <div class="odabir-sjedista-legenda-red">
+        <p style="background: #acbebe"></p>
+        Slobodno
+    </div>
+    <div class="odabir-sjedista-legenda-red">
+        <p style="background: #a01d26"></p>
+        Zauzeto
+    </div>
+    <div class="odabir-sjedista-legenda-red">
+        <p style="background: gold"></p>
+        Odabrano
+    </div>
+</div>
+
+<div id="seats-all" style="background: transparent">
+    @*<div class="seats-row">
+        <div class="seat">B1</div>
+        <div class="seat-zauzeto">B2</div>
+        <div class="seat-zauzeto">B3</div>
+        <div class="seat-zauzeto">B4</div>
+        <div class="seat-zauzeto">B5</div>
+        <div class="seat-zauzeto">B6</div>
+        <div class="seat">B7</div>
+        <div class="seat-zauzeto">B4</div>
+        <div class="seat-zauzeto">B5</div>
+        <div class="seat-zauzeto">B6</div>
+    </div>
+    <div class="seats-row">
+        <div class="seat">C1</div>
+        <div class="seat">C2</div>
+        <div class="seat">C3</div>
+        <div class="seat-zauzeto">C4</div>
+        <div class="seat-zauzeto">C5</div>
+        <div class="seat">C6</div>
+        <div class="seat">C7</div>
+        <div class="seat-zauzeto">C4</div>
+        <div class="seat-zauzeto">C5</div>
+        <div class="seat">C6</div>
+    </div>
+    <div class="seats-row">
+        <div class="seat">D1</div>
+        <div class="seat-zauzeto">D2</div>
+        <div class="seat-zauzeto">D3</div>
+        <div class="seat-zauzeto">D4</div>
+        <div class="seat-zauzeto">D5</div>
+        <div class="seat">D6</div>
+        <div class="seat">D7</div>
+        <div class="seat-zauzeto">D4</div>
+        <div class="seat-zauzeto">D5</div>
+        <div class="seat">D6</div>
+    </div>
+    <div class="seats-row">
+        <div class="seat">E1</div>
+        <div class="seat">E2</div>
+        <div class="seat-zauzeto">E3</div>
+        <div class="seat-zauzeto">E4</div>
+        <div class="seat">E5</div>
+        <div class="seat-zauzeto">E6</div>
+        <div class="seat-zauzeto">E7</div>
+        <div class="seat-zauzeto">E4</div>
+        <div class="seat">E5</div>
+        <div class="seat-zauzeto">E6</div>
+    </div>
+    <div class="seats-row">
+        <div class="seat">A1</div>
+        <div class="seat-zauzeto">A2</div>
+        <div class="seat-zauzeto">A3</div>
+        <div class="seat">A4</div>
+        <div class="seat">A5</div>
+        <div class="seat-zauzeto">A6</div>
+        <div class="seat-zauzeto">A7</div>
+        <div class="seat">A4</div>
+        <div class="seat">A5</div>
+        <div class="seat-zauzeto">A6</div>
+    </div>*@
+    @*<div class="seats-row">
+        <div class="seat">E1</div>
+        <div class="seat">E2</div>
+        <div class="seat-zauzeto">E3</div>
+        <div class="seat-zauzeto">E4</div>
+        <div class="seat">E5</div>
+        <div class="seat-zauzeto">E6</div>
+        <div class="seat-zauzeto">E7</div>
+        <div class="seat-zauzeto">E4</div>
+        <div class="seat">E5</div>
+        <div class="seat-zauzeto">E6</div>
+    </div>
+    <div class="seats-row">
+        <div class="seat">D1</div>
+        <div class="seat-zauzeto">D2</div>
+        <div class="seat-zauzeto">D3</div>
+        <div class="seat-zauzeto">D4</div>
+        <div class="seat-zauzeto">D5</div>
+        <div class="seat">D6</div>
+        <div class="seat">D7</div>
+        <div class="seat-zauzeto">D4</div>
+        <div class="seat-zauzeto">D5</div>
+        <div class="seat">D6</div>
+    </div>
+    <div class="seats-row">
+        <div class="seat">C1</div>
+        <div class="seat">C2</div>
+        <div class="seat">C3</div>
+        <div class="seat-zauzeto">C4</div>
+        <div class="seat-zauzeto">C5</div>
+        <div class="seat">C6</div>
+        <div class="seat">C7</div>
+        <div class="seat-zauzeto">C4</div>
+        <div class="seat-zauzeto">C5</div>
+        <div class="seat">C6</div>
+    </div>
+    <div class="seats-row">
+        <div class="seat">B1</div>
+        <div class="seat-zauzeto">B2</div>
+        <div class="seat-zauzeto">B3</div>
+        <div class="seat-zauzeto">B4</div>
+        <div class="seat-zauzeto">B5</div>
+        <div class="seat-zauzeto">B6</div>
+        <div class="seat">B7</div>
+        <div class="seat-zauzeto">B4</div>
+        <div class="seat-zauzeto">B5</div>
+        <div class="seat-zauzeto">B6</div>
+    </div>
+    <div class="seats-row">
+        <div class="seat">A1</div>
+        <div class="seat-zauzeto">A2</div>
+        <div class="seat-zauzeto">A3</div>
+        <div class="seat">A4</div>
+        <div class="seat">A5</div>
+        <div class="seat-zauzeto">A6</div>
+        <div class="seat-zauzeto">A7</div>
+        <div class="seat">A4</div>
+        <div class="seat">A5</div>
+        <div class="seat-zauzeto">A6</div>
+    </div>*@
+</div>
+<div id="trapezoid"></div>
+<div id="seats-container-ponisti">
+    <a onclick="ponistiOdabranaSjedista()">Poništi</a>
+</div>
+<div class="seats-container-donji-div">
+    <div id="ukupno-za-platiti">
+        Ukupno za platiti: <span id="za-platiti-span">0</span> KM
+    </div>
+    <div id="rezervisi-btn">
+        <button type="submit" id="btn-blocked" @*onclick="platiRezervaciju()*@>
+            Rezerviši
+        </button>
+    </div>
+</div>
+
+
+<script src="~/js/sjedista.js"></script>

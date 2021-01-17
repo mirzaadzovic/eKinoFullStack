@@ -51,8 +51,29 @@ namespace eKino.Controllers
         //}
         public IActionResult Index()
         {
-            HomeIndexVM m = new HomeIndexVM();
-            return View(m);
+            HomeIndexVM model = new HomeIndexVM();
+
+            ////Dodavanje sjedišta u bazu
+            //string[] redovi = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    for (int j = 0; j < 10; j++)
+            //    {
+            //        Sjediste s = new Sjediste()
+            //        {
+            //            SalaID = 7,
+            //            LoveSjediste = false,
+            //            KolonaOznaka = j + 1,
+            //            RedOznaka = redovi[i]
+            //        };
+            //        _db.Sjediste.Add(s);
+            //        Console.Write($"{s.RedOznaka}{s.KolonaOznaka}");
+            //        _db.SaveChanges();
+            //    }
+            //    Console.WriteLine();
+            //}
+
+            return View(model);
         }
 
         [Authorize]

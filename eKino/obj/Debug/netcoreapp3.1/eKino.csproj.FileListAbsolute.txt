@@ -215,3 +215,5 @@ D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Projekcije\Prikaz.cs
 D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Projekcije\Uredi.cshtml.g.cs
 D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Filmovi\Dodaj.cshtml.g.cs
 D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Filmovi\Prikaz.cshtml.g.cs
+D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Sjedista\Rezervisi.cshtml.g.cs
+D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Sjedista\Prikaz.cshtml.g.cs

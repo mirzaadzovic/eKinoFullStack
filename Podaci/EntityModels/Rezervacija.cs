@@ -8,7 +8,7 @@ namespace Podaci.EntityModels
     public class Rezervacija
     {
         public int ID { get; set; }
-        public int KorisnikID { get; set; }
+        public string KorisnikID { get; set; }
         public Korisnik Korisnik { get; set; }
         public int ProjekcijaID {get; set;}
         public Projekcija Projekcija { get; set; }

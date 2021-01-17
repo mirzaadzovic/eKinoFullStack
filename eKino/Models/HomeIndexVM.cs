@@ -1,4 +1,5 @@
-﻿using System;
+﻿using eKino.Helper_Metode;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,20 +24,21 @@ namespace eKino.Models
 
                 DateTime danas = DateTime.Today;
                 danas = danas.AddDays(i);
-                if (danas.DayOfWeek == DayOfWeek.Sunday)
-                    dan.DanUSedmici="Nedjelja";
-                else if (danas.DayOfWeek == DayOfWeek.Monday)
-                    dan.DanUSedmici = "Ponedjeljak";
-                else if (danas.DayOfWeek == DayOfWeek.Tuesday)
-                    dan.DanUSedmici = "Utorak";
-                else if (danas.DayOfWeek == DayOfWeek.Wednesday)
-                    dan.DanUSedmici = "Srijeda";
-                else if (danas.DayOfWeek == DayOfWeek.Thursday)
-                    dan.DanUSedmici = "Četvrtak";
-                else if (danas.DayOfWeek == DayOfWeek.Friday)
-                    dan.DanUSedmici = "Petak";
-                else if (danas.DayOfWeek == DayOfWeek.Saturday)
-                    dan.DanUSedmici = "Subota";
+                //if (danas.DayOfWeek == DayOfWeek.Sunday)
+                //    dan.DanUSedmici="Nedjelja";
+                //else if (danas.DayOfWeek == DayOfWeek.Monday)
+                //    dan.DanUSedmici = "Ponedjeljak";
+                //else if (danas.DayOfWeek == DayOfWeek.Tuesday)
+                //    dan.DanUSedmici = "Utorak";
+                //else if (danas.DayOfWeek == DayOfWeek.Wednesday)
+                //    dan.DanUSedmici = "Srijeda";
+                //else if (danas.DayOfWeek == DayOfWeek.Thursday)
+                //    dan.DanUSedmici = "Četvrtak";
+                //else if (danas.DayOfWeek == DayOfWeek.Friday)
+                //    dan.DanUSedmici = "Petak";
+                //else if (danas.DayOfWeek == DayOfWeek.Saturday)
+                //    dan.DanUSedmici = "Subota";
+                dan.DanUSedmici = HelperMetode.DanUsedmiciBosanski(danas);
 
                 Dani.Add(dan);
             }
