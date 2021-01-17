@@ -10,28 +10,30 @@
         <div class="film-prikaz">
             <div class="film-naslov">
                 <h1>@f.FilmIme</h1> 
-                <p style="font-size: 25px">(@f.Godina)</p>
+                <p style="font-size: 28px">(@f.Godina)</p>
             </div>
             <div class="film-podnaslov">
-                <p>Trajanje: @f.Trajanje</p>
-                <p>Žanr: @f.Zanr</p>
+                <p><b>Trajanje:</b> @f.Trajanje min</p>
+                <p><b>Žanr:</b> @f.Zanr</p>
             </div>
-            <div .class="film-prikaz-gore">
-                <div><img src="@f.SlikaURL"/></div>
-                <div><iframe src="@f.TrailerURL"></iframe></div>
-            </div>
-            <div .class="film-prikaz-dolje">
-                <div>
-                    <p>Reditelj: @f.Reditelj</p>
-                    <p>Glumci: @f.Glumci</p>
+            <div class="film-prikaz-gore">
+                <div><img src="@f.SlikaURL" /></div>
+                <div class="film-info">
+                    <div class="film-info-div"><p>@f.Info</p></div>
+                    <div>
+                        <p><b>Reditelj:</b> @f.Reditelj</p>
+                        <p><b>Glumci:</b> @f.Glumci</p>
+                    </div>
                 </div>
-                <div>
-                    <h4>@f.Info</h4>
-                </div>
+
             </div>
-            <div>
-                <a href="/Filmovi/Dodaj?ID=@f.FilmID">Uredi</a>
-                <a href="/Filmovi/Obrisi?ID=@f.FilmID">Obriši</a>
+            <div class="film-prikaz-dolje">
+
+                <div>@Html.Raw(f.TrailerURL)</div>
+            </div>
+            <div class="film-prikaz-dugmad">
+                <a href="/Filmovi/Dodaj?ID=@f.FilmID" class="film-prikaz-btn">Uredi</a>
+                <a href="/Filmovi/Obrisi?ID=@f.FilmID" class="film-prikaz-btn delete-btn">Obriši</a>
             </div>
         </div>
     }

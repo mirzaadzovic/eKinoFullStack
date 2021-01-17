@@ -34,7 +34,7 @@ namespace eKino.Controllers
                         TrailerURL=f.TrailerUrl,
                         Info=f.Info
                     })
-                    .OrderBy(f=>f.Godina)
+                    .OrderByDescending(f=>f.Godina)
                     .ThenBy(f=>f.FilmIme)
                     .ToList();
                
@@ -77,8 +77,10 @@ namespace eKino.Controllers
         {
             FilmoviDodajVM model = ID == 0 ? new FilmoviDodajVM() :
                 _db.Film
+                .Where(f=>f.ID==ID)
                 .Select(f => new FilmoviDodajVM()
                 { 
+                    FilmID=ID,
                     FilmIme=f.Naziv,
                     Godina=f.Godina.ToString(),
                     Zanr=f.Zanr,
@@ -114,7 +116,7 @@ namespace eKino.Controllers
             }
 
             _db.SaveChanges();
-            return Redirect("/Admin/Index");
+            return Redirect("/Filmovi/Prikaz");
         }
     }
 }

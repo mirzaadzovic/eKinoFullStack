@@ -170,35 +170,94 @@ header{
 }
 
 /*FILMOVI PRIKAZ*/
-.filmovi-container{
-    width: 100%;
+.filmovi-container {
+    width: 80%;
+    margin: 0 auto;
+    box-shadow: 1px -11px 29px -5px rgba(0, 0, 0, 0.35);
 }
-.filmovi-container > div{
-}
+
 .film-naslov{
     width: 100%;
     text-align: center;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
-film-podnaslov{
+.film-podnaslov {
     font-size: 15px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 30px;
+}
+.film-podnaslov p{
+    padding: 5px 10px 5px 0;
 }
 .film-prikaz {
     width: 100%;
     padding: 15px;
-    border-bottom: 3px solid gray;
+    background-color: #f4f4ef;
+    border-bottom: 1px solid rgba(21, 22, 26, 0.555);
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
-div.film-prikaz-gore, div.film-prikaz-dolje{
+div.film-prikaz-gore, div.film-prikaz-dolje, .film-prikaz-dugmad{
     display: flex;
     flex-direction: row;
     padding: 5px;
-    justify-content: center;
 }
+.film-info{
+    height: 260px;
+    width: 53%;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left:40px;
+
+}
+
+.film-prikaz-gore{
+    width: 560px;
+    margin-bottom: 10px;
+}
+.film-info-div {
+    overflow-y: scroll;
+    padding-right: 10px;
+    margin-bottom: 40px;
+}
+
+.film-prikaz-btn {
+    background-color: #20232a;
+    color: #f4eade;
+    border-radius: 10px;
+    padding: 5px 30px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid #20232a81;
+    text-decoration: none;
+    margin: 5px;
+}
+    .film-prikaz-btn:hover {
+        transition: 0.2s;
+        cursor: pointer;
+        background: gold;
+        color: black;
+    }
+.film-prikaz-dugmad {
+    width: 550px;
+    justify-content: flex-end;
+    padding-top: 20px;
+}
+.delete-btn {
+    background-color: #a01d26;
+    color: #f4eade;
+    border: none;
+}
+
+
 
 
 
