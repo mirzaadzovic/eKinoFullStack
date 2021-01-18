@@ -2,6 +2,7 @@
 using eKino.Helper_Metode;
 using eKino.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Podaci.EntityModels;
@@ -15,9 +16,13 @@ namespace eKino.Controllers
     [Authorize]
     public class SjedistaController : Controller
     {
+        private readonly UserManager<Korisnik> _userManager;
+        private readonly SignInManager<Korisnik> _signInManager;
         private ApplicationDbContext _db;
-        public SjedistaController(ApplicationDbContext db)
+        public SjedistaController(UserManager<Korisnik> userManagar, SignInManager<Korisnik> signInManager, ApplicationDbContext db)
         {
+            _userManager = userManagar;
+            _signInManager = signInManager; 
             _db = db;
 
         }
@@ -88,17 +93,42 @@ namespace eKino.Controllers
             }
             List<SjedistaPrikazVM.Odabrana> odabrana = sjedista
                 .Where(s => s.cssClass == "seat")
+                .OrderByDescending(s=>s.Red)
+                .ThenBy(s=>s.Kolona)
                 .Select(s => new SjedistaPrikazVM.Odabrana()
                 {
                     Odabrano = false,
                     SjedisteID=s.SjedisteID
-                }).ToList();
+                })
+                .OrderBy(s=>s.SjedisteID)
+                .ToList();
             SjedistaPrikazVM model = new SjedistaPrikazVM()
             {
-                Sjedista=sjedista,
+                TerminID = TerminID,
+                Sjedista =sjedista,
                 OdabranaSjedista=odabrana
             };
             return PartialView(model);
+        }
+        public IActionResult Snimi(int TerminID, int[] sjedista)
+        {
+            foreach(var s in sjedista)
+            {
+                    Rezervacija rezervacija = new Rezervacija()
+                    {
+                        SjedisteID=s,
+                        ProjekcijaID=TerminID,
+                        KorisnikID=_userManager.GetUserAsync(User).Result.Id,
+                        DatumRezervacije=DateTime.Now,
+                        TipRezervacijeID=1,
+                        Sifra=Guid.NewGuid()
+                    };
+
+                    _db.Add(rezervacija);
+            }
+
+            _db.SaveChanges();
+            return Redirect("/");
         }
     }
 }

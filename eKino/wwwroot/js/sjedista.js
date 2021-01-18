@@ -5,6 +5,9 @@ var odabranihSjedista = null;
 var zaPlatiti = null;
 var cijenaKarte = null;
 var cijenaZaPlatiti;
+var checkboxoviSjedista = null;
+var sjedista=null;
+
 
 
 
@@ -13,6 +16,8 @@ function inicijalizujSlobodnaSjedista() {
     odabranihSjedista = document.getElementById("ukupno-sjedista");
     zaPlatiti = document.getElementById("za-platiti-span");
     cijenaKarte = document.getElementById("cijena-karte");
+    checkboxoviSjedista = document.querySelectorAll(".seats-row input");
+
 
     //Na svako slobodno sjediste dodajemo event listener na klik
     for (let i = 0; i < slobodnaSjedista.length; i++) {
@@ -47,6 +52,7 @@ function ponistiOdabranaSjedista() {
     }
     nulirajSpanove();
     provjeriDugme();
+    nulirajCheckBoxove();
 }
 
 function nulirajSpanove() {
@@ -58,10 +64,14 @@ function provjeriDugme() {
     let dugme = document.querySelector("#rezervisi-btn button");
     if (zaPlatiti.innerText == 0) {
         dugme.id = "btn-blocked";
+        dugme.disabled = true;
         return false;
     } else {
         dugme.id = "btn-rezervisi";
+        dugme.disabled = false;
         return true;
     }
 }
+
+
 

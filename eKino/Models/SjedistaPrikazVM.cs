@@ -21,7 +21,6 @@ namespace eKino.Models
         }
         public List<SjedistaPrikazVM.Row> Sjedista { get; set; }
         public List<SjedistaPrikazVM.Odabrana> OdabranaSjedista { get; set; }
-        
-        
+        public int TerminID { get; set; }
     }
 }

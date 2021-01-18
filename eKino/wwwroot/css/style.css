@@ -271,6 +271,9 @@ header {
     background: transparent;
     margin-top: -11px;
 }
+.seats-row input{
+
+}
 
 .seat,
 .seat-zauzeto,
