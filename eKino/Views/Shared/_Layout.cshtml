@@ -10,9 +10,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - eKino</title>
-    @*<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-        <link rel="stylesheet" href="~/css/site.css" />*@
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-mini.css" />
     <link rel="stylesheet" href="~/css/style.css" />
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </head>
@@ -30,7 +30,7 @@
             <a href="/Home/Index" class="navbar-element" @*id="navbar-active"*@>POČETNA</a>
             <a href="#">FILMOVI</a>
             <a href="#">NAJAVE</a>
-            <a href="#">VIJESTI</a>
+            <a href="/Home/Vijesti">VIJESTI</a>
             <a href="#">KONTAKT</a>
             @if (SignInManager.IsSignedIn(User) && !UserManager.GetUserAsync(User).Result.IsPosjetilac)
             {

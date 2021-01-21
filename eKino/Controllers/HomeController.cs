@@ -51,7 +51,19 @@ namespace eKino.Controllers
         //}
         public IActionResult Index()
         {
-            HomeIndexVM model = new HomeIndexVM();
+            List<HomeIndexVM.Row> vijesti = _db.Vijest.OrderByDescending(v => v.Datum)
+                .Take(2)
+                .Select(v => new HomeIndexVM.Row() 
+                {
+                   ID=v.ID,
+                   SlikaUrl=v.SlikaUrl,
+                   Naslov=v.Naslov
+                }).ToList();
+                
+            HomeIndexVM model = new HomeIndexVM() 
+            { 
+                Vijesti=vijesti            
+            };
 
             ////Dodavanje sjedišta u bazu
             //string[] redovi = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
@@ -73,6 +85,30 @@ namespace eKino.Controllers
             //    Console.WriteLine();
             //}
 
+            return View(model);
+        }
+        public IActionResult Vijesti(int ID)
+        {
+            List<VijestiPrikazVM.Row> vijesti = _db.Vijest
+                   .Select(v => new VijestiPrikazVM.Row()
+                   {
+                       ID = v.ID,
+                       Naslov = v.Naslov,
+                       Sadrzaj = v.Sadrzaj,
+                       Datum = v.Datum,
+                       SlikaUrl = v.SlikaUrl,
+                       Korisnik = v.Korisnik.UserName
+                   })
+                   .OrderByDescending(v => v.Datum)
+                   .ToList();
+            if (ID != 0)
+            {
+                vijesti = vijesti.Where(v => v.ID == ID).ToList();
+            }
+            VijestiPrikazVM model = new VijestiPrikazVM()
+            {
+                Vijesti = vijesti
+            };
             return View(model);
         }
 

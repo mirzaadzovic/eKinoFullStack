@@ -26,7 +26,7 @@
             </div>
             <br />
             <div class="zakazivanje-komponenta">
-                <label>Vrijeme</label> <br /><input type="time" asp-for="Vrijeme" />
+                <label>Vrijeme</label> <br /><input type="time" asp-for="Vrijeme"/>
                 <span asp-validation-for="Vrijeme" class="text-danger"></span>
             </div>
             <div class="zakazivanje-komponenta">
@@ -65,12 +65,12 @@
             <div class="zakazivanje-komponenta">
                 <label id="zakazivanje-datum-od">Od</label>
                 <br />
-                <input id="datumOdabir" type="date" asp-for="DatumOd"/>
+                <input id="datumOdabir" type="date" asp-for="DatumOd" onchange="provjeriDatumDo()"/>
             </div>
             <div class="zakazivanje-komponenta" id="krajnji-datum-div">
                 <label>Do</label>
                 <br />
-                <input id="krajnji-datum" type="date" asp-for="DatumDo"/>
+                <input id="krajnji-datum" type="date" asp-for="DatumDo" min="@DateTime.Now.Date.ToString("yyyy-mm-dd")"/>
             </div>
             <div class="zakazivanje-komponenta" style="margin-top: 70px">
                 <button type="submit" id="film-zakazi-btn">Zakaži</button>

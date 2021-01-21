@@ -1,0 +1,28 @@
+﻿
+@{
+    Layout = "_LayoutAdmin";
+    ViewData["title"] = "Sve vijesti";
+}
+@model VijestiPrikazVM
+    <div class="vijesti-sve-container">
+        @foreach (var v in Model.Vijesti)
+        {
+            <div class="vijest-container">
+                <div>
+                    <div><h2>@v.Naslov</h2></div>
+                    <div><b>Napisao: </b>@v.Korisnik, @v.Datum.ToString("d.M.yyyy"). u @v.Datum.ToString("HH:mm") sati</div>
+                </div>
+                <div>
+                    <img src="@v.SlikaUrl" style="height: 300px" />
+                </div>
+                <div>
+                    <p>@v.Sadrzaj</p>
+                </div>
+                <div>
+                    <a href="/Vijesti/Dodaj?ID=@v.ID" class="film-prikaz-btn">Uredi</a>
+                    <a href="/Vijesti/Obrisi?ID=@v.ID" class="film-prikaz-btn delete-btn">Obriši</a>
+                </div>
+            </div>
+        }
+    </div>
+

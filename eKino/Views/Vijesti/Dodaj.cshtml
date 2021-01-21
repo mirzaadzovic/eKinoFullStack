@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Dodaj vijest";
+    Layout = "_LayoutAdmin";
+}
+@model VijestiDodajVM
+<div class="input-div-container">
+    <form id="input-form" asp-action="Snimi" asp-controller="Vijesti">
+        <input hidden asp-for="ID" />
+        <div class="input-slika">
+            @if (Model.ID == 0)
+            {
+                <img src="https://gooloc.com/wp-content/uploads/vector/36/rnoquhaqlke.jpg" style="width: auto"/>
+            }
+            else
+            {
+                <img src="@Model.SlikaUrl" />
+            }
+        </div>
+        <div class="input-div">
+            <label class="input-label">Naslov</label>
+            <input class="input-polje" type="text" placeholder="Naslov" asp-for="Naslov" autocomplete="off" />
+        </div>
+        <div class="input-div">
+            <label class="input-label">Slika (URL)</label>
+            <input type="text" class="input-polje" id="input-film-slika" placeholder="Slika (URL)" asp-for="SlikaUrl" onchange="prikaziSliku()" autocomplete="off" />
+        </div>
+       
+        <div class="input-div">
+            <label class="input-label">Sadrzaj</label>
+            <textarea cols="50" rows="100" asp-for="Sadrzaj" class="input-textbox" style="width: 100%"></textarea>
+        </div>
+        <div class="input-div">
+            @if (Model.ID == 0)
+            {
+                <input class="input-submit" type="submit" value="Dodaj" />
+            }
+            else
+            {
+                <input class="input-submit" type="submit" value="Sačuvaj promjene" />
+            }
+        </div>
+    </form>
+</div>

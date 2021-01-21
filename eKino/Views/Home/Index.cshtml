@@ -4,7 +4,52 @@
 @model HomeIndexVM
 
 <div id="komponente">
-    <div id="navigacija"></div>
+    <div id="navigacija">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                @for (int i = 0; i < Model.Vijesti.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        <li data-target="#carouselExampleIndicators" data-slide-to="@i" class="active"></li>
+                    }
+                    else
+                    {
+                        <li data-target="#carouselExampleIndicators" data-slide-to="@i"></li>
+                    }
+                }
+            </ol>
+            <div class="carousel-inner">
+                @for (int i = 0; i < Model.Vijesti.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        <a class="carousel-item active" href="/Home/Vijesti?ID=@Model.Vijesti[i].ID">
+                            <img class="d-block w-100" src="@Model.Vijesti[i].SlikaUrl" alt="First slide">
+                            <div class="carousel-caption d-none d-md-block vijest-link">@Model.Vijesti[i].Naslov</div>
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="carousel-item"  href="/Home/Vijesti?ID=@Model.Vijesti[i].ID">
+                            <img class="d-block w-100" src="@Model.Vijesti[i].SlikaUrl" alt="First slide">
+                            <div class="carousel-caption d-none d-md-block vijest-link">@Model.Vijesti[i].Naslov</div>
+                        </a>
+                    }
+                }
+
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only"></span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only"></span>
+            </a>
+        </div>
+
+    </div>
     <div class="pregled-ponude">
         <div class="pregled-ponude-dani">
             @foreach (var p in Model.Dani)

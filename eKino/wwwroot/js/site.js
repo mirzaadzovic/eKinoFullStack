@@ -3,14 +3,18 @@
 
 // Write your JavaScript code.
 
+
 //Header responsive slide
 $("#hamburger").click(function () {
     $(".meni").slideToggle();
 });
 
+//zatvorena header navigacija po defaultu ako je prozor uži od 600px 
 window.addEventListener("resize", () => {
     if (window.innerWidth > 600)
         document.querySelector(".meni").style.display = "flex";
+    else
+        document.querySelector(".meni").style.display = "none";
 });
 
 
@@ -106,3 +110,23 @@ function omoguciKrajnjiDatum() {
         krajnjiDiv.style.opacity = 1;
     }
 }
+function provjeriDatumDo() {
+    var datum1 = document.getElementById("datumOdabir");
+    var datum2 = document.getElementById("krajnji-datum");
+
+    if (datum1.value > datum2.value)
+        datum2.value = datum1.value;
+    console.log(datum1.value, datum2.value);
+}
+
+//TIMEPICKER
+//var timepicker = new TimePicker('time', {
+//    lang: 'en',
+//    theme: 'dark'
+//});
+//timepicker.on('change', function (evt) {
+
+//    var value = (evt.hour || '00') + ':' + (evt.minute || '00');
+//    evt.element.value = value;
+
+//});

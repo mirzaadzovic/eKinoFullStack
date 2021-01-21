@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eKino.Data;
 
 namespace Podaci.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210120144221_dodan Vijest entity model")]
+    partial class dodanVijestentitymodel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -409,35 +411,6 @@ namespace Podaci.Migrations
                     b.ToTable("TipRezervacije");
                 });
 
-            modelBuilder.Entity("Podaci.EntityModels.Vijest", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("Datum")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("KorisnikID")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Naslov")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Sadrzaj")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("SlikaUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("KorisnikID");
-
-                    b.ToTable("Vijest");
-                });
-
             modelBuilder.Entity("Podaci.EntityModels.Administrator", b =>
                 {
                     b.HasBaseType("Podaci.EntityModels.Korisnik");
@@ -557,13 +530,6 @@ namespace Podaci.Migrations
                         .HasForeignKey("SalaID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Podaci.EntityModels.Vijest", b =>
-                {
-                    b.HasOne("Podaci.EntityModels.Korisnik", "Korisnik")
-                        .WithMany()
-                        .HasForeignKey("KorisnikID");
                 });
 #pragma warning restore 612, 618
         }

@@ -50,6 +50,42 @@ body,
 #komponente{
     position: absolute;
     top: 26px;
+    z-index: 2;
+}
+/*VIJESTI*/
+.sve{
+    position:relative;
+    top: 26px;
+    margin: 0 auto;
+    background-color: white;
+    width: 800px;
+}
+
+.vijest-container {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(21, 22, 26, 0.555);
+    margin-bottom: 10px;
+    padding: 10px;
+}
+    .vijest-container a {
+        text-decoration: none;
+        color: #20232a;
+    }
+        .vijest-container a:hover {
+            transition: 0.2s;
+            color: #a01d26;
+        }
+
+    .vijest-container > div {
+        margin-bottom: 5px;
+        padding: 5px;
+    }
+
+vijesti-sve-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
 }
 
 
@@ -68,7 +104,7 @@ header {
     position: fixed;
     left: 0;
     right: 0;
-    z-index: 2;
+    z-index: 3;
     min-width: 300px;
 }
 
@@ -145,10 +181,13 @@ header {
 }
 
 #navigacija {
-    height: 300px;
-    background-color: #acbebe;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.55);
     width: 800px;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 #shadow-box {
@@ -568,21 +607,38 @@ header {
     }
     .pregled-ponude-dani {
         top: 52px;
-    }   
+    }
+
+    .film-ponuda-podaci:nth-child(2){
+        width: 150px;
+    }
+    #navigacija {
+        width: 100%;
+        margin: 0 auto;
+    }
+    #komponente{
+        width: 100%;
+    }
+    .pregled-ponude{
+        width: 100%;
+    }
  }
 @media only screen and (max-width: 600px) {
+
     header {
         flex-direction: column;
+        overflow-x: hidden;
     }
 
     #login-navbar {
         order: -1;
         align-self: flex-end;
-        right: 10px;
     }
-
+    #navigacija {
+        width: 100%;
+    }
     .meni {
-        flex-direction: column;
+        display: block;
         align-items: center;
         display: none;
     }
@@ -591,14 +647,15 @@ header {
             font-size: 18px;
             padding: 10px;
             width: 100%;
+            display: block;
         }
 
     #hamburger {
         display: block;
     }
 
-    .pregled-ponude, #navigacija {
-        width: 600px;
+    .pregled-ponude{
+        width: 100%;
     }
 
     .pregled-ponude-dani {
@@ -606,17 +663,53 @@ header {
         top: 50px;
         justify-content: space-between;
         text-align: center;
+        overflow-x: scroll;
     }
 
         .pregled-ponude-dani a {
             font-size: 15px;
             width: 100%;
         }
+    .film-ponuda{
+        flex-wrap:wrap;
+        flex-direction: column !important;
+    }
 
     .film-ponuda-podaci p,
     .film-ponuda-termini p {
         font-size: 15px;
     }
+    #navigacija {
+        height: 250px;
+    }
+    .film-ponuda-desno{
+        justify-content: space-around;
+    }
+    .film-ponuda-lijevo {
+        position: relative;
+        left: 20px;
+    }
+    .film-ponuda-podaci p {
+        font-size: 15px;
+    }
+
+    .film-ponuda-podaci:nth-child(2) {
+        width: 150px;
+    }
+    .film-ponuda-rezervisi button, .film-ponuda-rezervisi a {
+        background-color: #20232a;
+        color: #f4eade;
+        border-radius: 7px;
+        padding: 5px 10px;
+        font-size: 15px;
+        outline: none;
+        border: 1px solid #20232a81;
+        position: relative;
+        left: 60%;
+        bottom: 30px;
+        text-decoration: none;
+    }
+    
 }
  @media only screen and (max-width: 300px) {
 
@@ -624,4 +717,7 @@ header {
         align-items: flex-end;
     }
 }
+}
+
+
 

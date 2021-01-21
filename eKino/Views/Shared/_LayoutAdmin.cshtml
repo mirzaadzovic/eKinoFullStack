@@ -18,12 +18,12 @@
 <body>
     <header>
         @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">*@
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">*@
 
         <div class="meni">
             <a href="/Home/Index" class="navbar-element">POČETNA</a>
@@ -36,12 +36,11 @@
                 <a href="/Admin/Index" id="navbar-active">ADMIN</a>
             }
         </div>
-
-
+        <partial name="_LoginPartial" />
 
         @*</div>
-                </div>
-            </nav>*@
+            </div>
+        </nav>*@
     </header>
     <div id="komponente">
         <div class="lijevo">
@@ -64,8 +63,8 @@
                 <div class="admin-izbornik-stavka">
                     <a>Upravljanje vijestima</a>
                     <div class="admin-podizbornik">
-                        <a>Sve vijesti</a>
-                        <a>Dodaj vijest</a>
+                        <a asp-action="Prikaz" asp-controller="Vijesti">Sve vijesti</a>
+                        <a asp-action="Dodaj" asp-controller="Vijesti">Dodaj vijest</a>
                     </div>
                 </div>
                 <div class="admin-izbornik-stavka">

@@ -13,12 +13,20 @@ namespace eKino.Models
             public int Value { get; set; }
             public string DanUSedmici { get; set; }
         }
+        public class Row
+        {
+            public int ID { get; set; }
+            public string SlikaUrl { get; set; }
+            public string Naslov { get; set; }
+        }
         public List<Dan> Dani { get; set; }
+        public List<Row> Vijesti {get; set;}
         public HomeIndexVM()
         {
             Dani = new List<Dan>();
             for(int i=0; i<7; i++)
             {
+                //INICIJALIZACIJA Dana u sedmici
                 Dan dan = new Dan();
                 dan.Value = i;
 

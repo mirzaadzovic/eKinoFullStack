@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eKino.Data;
 
 namespace Podaci.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210120150509_vijesti")]
+    partial class vijesti
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -419,7 +421,10 @@ namespace Podaci.Migrations
                     b.Property<DateTime>("Datum")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("KorisnikID")
+                    b.Property<int>("KorisnikID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("KorisnikId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Naslov")
@@ -433,7 +438,7 @@ namespace Podaci.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("KorisnikID");
+                    b.HasIndex("KorisnikId");
 
                     b.ToTable("Vijest");
                 });
@@ -563,7 +568,7 @@ namespace Podaci.Migrations
                 {
                     b.HasOne("Podaci.EntityModels.Korisnik", "Korisnik")
                         .WithMany()
-                        .HasForeignKey("KorisnikID");
+                        .HasForeignKey("KorisnikId");
                 });
 #pragma warning restore 612, 618
         }

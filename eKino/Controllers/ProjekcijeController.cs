@@ -120,8 +120,11 @@ namespace eKino.Controllers
             return View(model);
         }
         public IActionResult Snimi(ProjekcijeDodajVM model)
-        { 
-            if(model.DatumOd>model.DatumDo || !ModelState.IsValid)
+        {
+            if (model.DatumOd > model.DatumDo)
+                model.DatumDo = model.DatumOd;
+
+            if (!ModelState.IsValid)
             {
                 _hubContext.Clients.User(_userManager
                     .GetUserAsync(User).Result.Id)
