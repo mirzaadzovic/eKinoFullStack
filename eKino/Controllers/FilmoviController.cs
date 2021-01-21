@@ -16,11 +16,12 @@ namespace eKino.Controllers
         {
             _db = db;
         }
-        public IActionResult Prikaz(int ID)
+        public IActionResult Prikaz(int ID, string query)
         {
+            List<FilmoviDodajVM> filmovi = null;
             if (ID == 0)
             {
-                List<FilmoviDodajVM> filmovi = _db.Film
+                filmovi = _db.Film
                     .Select(f => new FilmoviDodajVM()
                     {
                         FilmID=f.ID,
@@ -37,18 +38,11 @@ namespace eKino.Controllers
                     .OrderByDescending(f=>f.Godina)
                     .ThenBy(f=>f.FilmIme)
                     .ToList();
-               
-                FilmoviPrikazVM model = new FilmoviPrikazVM()
-                {
-                    Filmovi = filmovi
-                };
-                
-                return View(model);
             }
 
             else
             {
-                List<FilmoviDodajVM> filmovi = _db.Film
+                filmovi = _db.Film
                     .Where(f => f.ID == ID)
                     .Select(f => new FilmoviDodajVM()
                     {
@@ -63,15 +57,20 @@ namespace eKino.Controllers
                         Info = f.Info
                     })
                     .ToList();
-
-                FilmoviPrikazVM model = new FilmoviPrikazVM()
-                {
-                    Filmovi = filmovi
-                };
-
-                return PartialView(model);
             }
+            query = query?.ToLower();
+            filmovi = filmovi
+                .Where(f => query == "" || query == null || f.FilmIme.ToLower().Contains(query)
+                || f.Godina.ToLower().Contains(query) || 
+                f.Glumci.ToLower().Contains(query) || f.Reditelj.ToLower().Contains(query))
+                .ToList();
 
+            FilmoviPrikazVM model = new FilmoviPrikazVM()
+            {
+                ID = ID,
+                Filmovi = filmovi
+            };
+            return PartialView(model);
         }
         public IActionResult Dodaj(int ID)
         {

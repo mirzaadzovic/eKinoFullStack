@@ -130,3 +130,12 @@ function provjeriDatumDo() {
 //    evt.element.value = value;
 
 //});
+//FILM PRETRAGA
+function trazi() {
+    let query = document.getElementById("search-input").value;
+    console.log(query);
+    let url = "/Filmovi/Prikaz?query=" + query;
+    $.get(url, function (data) {
+        $(".zakazivanje-container").html(data);
+    });
+}

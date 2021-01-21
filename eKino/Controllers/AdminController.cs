@@ -34,5 +34,9 @@ namespace eKino.Controllers
             string m = _userManager.GetUserAsync(User).Result.UserName;
             return View("Index",m);
         }
+        public IActionResult Filmovi(int ID)
+        {
+            return View(ID);
+        }
     }
 }

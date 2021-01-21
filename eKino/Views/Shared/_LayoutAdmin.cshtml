@@ -29,7 +29,7 @@
             <a href="/Home/Index" class="navbar-element">POČETNA</a>
             <a href="#">FILMOVI</a>
             <a href="#">NAJAVE</a>
-            <a href="#">VIJESTI</a>
+            <a href="/Home/Vijesti">VIJESTI</a>
             <a href="#">KONTAKT</a>
             @if (SignInManager.IsSignedIn(User) && !UserManager.GetUserAsync(User).Result.IsPosjetilac)
             {
@@ -56,7 +56,7 @@
                 <div class="admin-izbornik-stavka">
                     <a>Upravljanje filmovima</a>
                     <div class="admin-podizbornik">
-                        <a href="/Filmovi/Prikaz">Svi filmovi</a>
+                        <a href="/Admin/Filmovi/">Svi filmovi</a>
                         <a href="/Filmovi/Dodaj">Dodaj film</a>
                     </div>
                 </div>
@@ -75,9 +75,18 @@
         <div class="desno">
             <div class="desno-container">
                 <div><h2>@ViewData["Title"]</h2></div>
-                <div class="zakazivanje-container">
-                    @RenderBody()
-                </div>
+                @if (this.ViewContext.RouteData.Values["action"].ToString() == "Filmovi")
+                {
+                    <div class="input-div-container">
+                        <div class="input-div">
+                            <label class="input-label">Traži</label>
+                            <input id="search-input" class="input-polje" onkeydown="trazi()" />
+                        </div>
+                    </div>
+                }
+                    <div class="zakazivanje-container">
+                        @RenderBody()
+                    </div>
             </div>
 
         </div>

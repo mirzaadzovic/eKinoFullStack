@@ -220,3 +220,6 @@ D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Sjedista\Prikaz.csht
 D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Vijesti\Dodaj.cshtml.g.cs
 D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Vijesti\Prikaz.cshtml.g.cs
 D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Home\VIjesti.cshtml.g.cs
+D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Filmovi.cshtml.g.cs
+D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Home\Filmovi.cshtml.g.cs
+D:\0FIT\RS1\eKino\eKino\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_SearchPartial.cshtml.g.cs

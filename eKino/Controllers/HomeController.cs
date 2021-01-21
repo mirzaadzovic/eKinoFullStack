@@ -111,6 +111,10 @@ namespace eKino.Controllers
             };
             return View(model);
         }
+        public IActionResult Filmovi(int ID)
+        {
+            return View(ID);
+        }
 
         [Authorize]
         public IActionResult Privacy()

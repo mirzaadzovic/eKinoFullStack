@@ -4,22 +4,25 @@
 
 @model VijestiPrikazVM
 <div class="sve">
-    @foreach (var v in Model.Vijesti)
-    {
-    <div class="vijest-container">
-        <div>
-            <div><h2><a href="/Home/Vijesti?ID=@v.ID">@v.Naslov</a></h2></div>
-            <div><b>Napisao: </b>@v.Korisnik, @v.Datum.ToString("d.M.yyyy"). u @v.Datum.ToString("HH:mm") sati</div>
-        </div>
-        <div>
-            <img src="@v.SlikaUrl" style="height: 300px" />
-        </div>
-        @if (Model.Vijesti.Count == 1)
+    <div class="vijesti-sve-container">
+        @foreach (var v in Model.Vijesti)
         {
-            <div>
-                <p>@v.Sadrzaj</p>
+            <div class="vijest-container-client">
+                <div>
+                    <div><h2><a href="/Home/Vijesti?ID=@v.ID">@v.Naslov</a></h2></div>
+                    <div><b>Napisao: </b>@v.Korisnik, @v.Datum.ToString("d.M.yyyy"). u @v.Datum.ToString("HH:mm") sati</div>
+                </div>
+                <div>
+                    <img src="@v.SlikaUrl" style="height: 300px" />
+                </div>
+                @if (Model.Vijesti.Count == 1)
+                {
+                    <div class="vijesti-sadrzaj">
+                        <p>@v.Sadrzaj</p>
+                    </div>
+                }
             </div>
         }
     </div>
-    }
-</div>
+    </div>
+   

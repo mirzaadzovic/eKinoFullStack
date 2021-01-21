@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Filmovi";
+    Layout = "_Layout";
+
+}
+@model int
+    <div class="input-div-container" style="position: relative;
+     top: 26px; background-color: white; width: 800px; margin: 0 auto">
+        <div class="input-div">
+            <label class="input-label">Traži</label>
+            <input id="search-input" class="input-polje" onkeydown="traziClient()" />
+        </div>
+    </div>
+
+    <div class="sve">
+
+    </div>
+    <script>
+    getFilms(@Model);
+    function getFilms(ID) {
+        let url = "/Filmovi/Prikaz?ID=" + ID;
+            $.get(url, function (data) {
+                $(".sve").html(data);
+            });
+    }
+    function traziClient() {
+        let query = document.getElementById("search-input").value;
+        console.log(query);
+        let url = "/Filmovi/Prikaz?query=" + query;
+        $.get(url, function (data) {
+            $(".sve").html(data);
+        });
+    }
+    </script>
+
