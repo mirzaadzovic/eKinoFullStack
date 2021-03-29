@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+@using Podaci.EntityModels
+@using Microsoft.AspNetCore.Identity;
+@inject SignInManager<Korisnik> SignInManager
+@inject UserManager<Korisnik> UserManager
+
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - eKino</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-mini.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <header>
+
+        <div class="meni">
+            <a href="/Home/Index" class="navbar-element" @*id="navbar-active"*@>POČETNA</a>
+            <a href="/Home/Filmovi">FILMOVI</a>
+            <a href="#">NAJAVE</a>
+            <a href="/Home/Vijesti">VIJESTI</a>
+            <a href="#">KONTAKT</a>
+            @if (SignInManager.IsSignedIn(User) && !UserManager.GetUserAsync(User).Result.IsPosjetilac)
+            {
+                <a href="/Admin/Index">ADMIN</a>
+            }
+
+        </div>
+        <partial name="_LoginPartial" />
+        @*</div>
+                </div>
+            </nav>*@
+    </header>
+        <div id="shadow-box">
+            <form class="seats-container" asp-action="Snimi" asp-controller="Sjedista"></form>
+        </div>
+
+        <div id="komponente">
+            @RenderBody()
+        </div>
+
+        @*<footer class="border-top footer text-muted">
+                <div class="container">
+                    &copy; 2021 - eKino - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                </div>
+            </footer>*@
+
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @RenderSection("Scripts", required: false)
+
+        <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+        <script src="~/js/notifikacije.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    @using Microsoft.AspNetCore.Authorization;
+    @using Microsoft.AspNetCore.Identity;
+    @using Podaci.EntityModels;
+}
+@inject SignInManager<Korisnik> SignInManager
+@inject UserManager<Korisnik> UserManager
+@model PonudaPrikazVM
+
+@if (Model.Ponuda.Count <= 0)
+{
+    <h3 id="prazan-dan">Nema zakazanih projekcija na odabrani dan!</h3>
+}
+else
+{
+    @foreach (var f in Model.Ponuda)
+    {
+        <div class="film-ponuda">
+            <div class="film-ponuda-desno">
+                <div class="film-ponuda-slika">
+                    <img src=@f.SlikaUrl />
+                </div>
+                <div class="film-ponuda-podaci">
+                    <div>
+                        <h2>@f.Film</h2>
+                        <p><b>Godina: </b>@f.Godina</p>
+                        <p><b>Reditelj: </b>@f.Reditelj</p>
+                        <p><b>Uloge: </b>@f.Glumci</p>
+                        <p><b>Žanr: </b>@f.Zanr</p>
+                        <p><b>Trajanje: </b>@f.Trajanje min</p>
+                    </div>
+                    <div class="film-ponuda-opsirnije">
+                        <a href="/Home/Filmovi?ID=@f.FilmID"><h3>Opširnije...</h3></a>
+                    </div>
+                </div>
+            </div>
+            <div class="film-ponuda-lijevo">
+                <div class="film-ponuda-termini">
+                    <h3>@f.Datum.ToString("d.M.yyyy").</h3>
+                    @foreach (var t in Model.Termini)
+                    {
+                        if (t.FilmID == f.FilmID)
+                        {
+                            <p>@t.Vrijeme.ToString("HH:mm")</p>
+                        }
+
+                    }
+                </div>
+            </div>
+            <div class="film-ponuda-rezervisi">
+                @if (!SignInManager.IsSignedIn(User))
+                {
+                    <a href="/Identity/Account/Login">Kupi kartu</a>
+                }
+                else
+                {
+                    <button onclick="rezervisiSjedista(@f.ID)">Kupi kartu</button>
+                }
+
+            </div>
+        </div>
+
+    }
+}

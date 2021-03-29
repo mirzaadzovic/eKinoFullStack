@@ -1,0 +1,42 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Uredi projekcije";
+    Layout = "_LayoutAdmin";
+}
+@model ProjekcijePrikazVM
+<div class="pregled-ponude">
+    @foreach (var f in Model.Projekcije)
+    {
+        <div class="film-ponuda">
+            <div class="film-ponuda-desno">
+                <div class="film-ponuda-slika">
+                    <img src=@f.SlikaUrl />
+                </div>
+                <div class="film-ponuda-podaci">
+                    <div>
+                        <h2>@f.Film</h2>
+                        <p>@f.Cijena</p>
+                        <p>Trajanje: @f.Trajanje min</p>
+                    </div>
+                    <div class="film-ponuda-opsirnije">
+                        <h3>Covid19 mjere: @f.Covid19 </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="film-ponuda-lijevo">
+                <div class="film-ponuda-termini">
+                    <h3>Sala @f.Sala</h3>
+                    <p>Datum: @f.Datum.ToString("d.M.yyyy")</p>
+                    <p>Termin: @f.Vrijeme</p>
+                </div>
+            </div>
+            <div class="film-ponuda-rezervisi">
+                <a href="/Projekcije/Uredi?ID=@f.ID" style="right: 100px">Uredi</a>
+                <a href="/Projekcije/Obrisi?ID=@f.ID">Obriši</a>
+            </div>
+        </div>
+    }
+</div>
+       

@@ -1,0 +1,63 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+<style>
+    * {
+        overflow-x: hidden;
+    }
+
+    #komponente {
+        position: absolute;
+        top:56px;
+        background: white;
+        padding: 30px;
+    }
+   #render{
+       background: white;
+   }
+    header, .meni, .meni > a, #login-navbar, #login-navbar a, #logout {
+        color: white;
+        background-color: #1b6ec2;
+        display: flex;
+    }
+    .meni > a:hover {
+        background-color: white;
+        color: #1b6ec2;
+        transform: none;
+    }
+    #login-navbar{
+        order: 1;
+        text-align: center;
+    }
+    #login-navbar a{
+        width: 100px;
+    }
+    #logout{
+        text-align:left;
+    }
+    @@media(max-width: 600px){
+        #login-navbar {
+            order: -1;
+            align-self: flex-end;
+        }
+
+
+
+        .meni {
+            display: block;
+            align-items: center;
+            display: none;
+        }
+
+            .meni > a {
+                font-size: 18px;
+                padding: 10px;
+                width: 100%;
+                display: block;
+            }
+
+    }
+</style>

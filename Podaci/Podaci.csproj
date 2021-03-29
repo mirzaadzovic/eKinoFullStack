@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\**" />
+    <EmbeddedResource Remove="Migrations\**" />
+    <None Remove="Migrations\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Migrations\20210109000731_initial.cs" />
+    <Compile Include="Migrations\20210109000731_initial.Designer.cs" />
+    <Compile Include="Migrations\20210117223804_Rezervacija strind korisnikID.cs" />
+    <Compile Include="Migrations\20210117223804_Rezervacija strind korisnikID.Designer.cs" />
+    <Compile Include="Migrations\20210120144221_dodan Vijest entity model.cs" />
+    <Compile Include="Migrations\20210120144221_dodan Vijest entity model.Designer.cs" />
+    <Compile Include="Migrations\20210120150509_vijesti.cs" />
+    <Compile Include="Migrations\20210120150509_vijesti.Designer.cs" />
+    <Compile Include="Migrations\20210120152233_vijestID ispravljen int u string.cs" />
+    <Compile Include="Migrations\20210120152233_vijestID ispravljen int u string.Designer.cs" />
+    <Compile Include="Migrations\20210308133917_test lokalni.cs" />
+    <Compile Include="Migrations\20210308133917_test lokalni.Designer.cs" />
+    <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
+  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.8" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.8" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.8" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.8" />
+	</ItemGroup>
+
+</Project>

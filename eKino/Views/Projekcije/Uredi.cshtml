@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewData["Title"] = "Uredi projekciju";
+ Layout = "_LayoutAdmin";
+}
+@model ProjekcijeUrediVM
+
+<form asp-action="SnimiPromjene" asp-controller="Projekcije">
+    <div id="zakazivanje-container-slika">
+        <img src="@Model.SlikaUrl" />
+        <br />
+        <h2>@Model.FilmIme</h2>
+    </div>
+    <div id="zakazivanje-container-opcije">
+        <div>
+            <div class="zakazivanje-komponenta">
+                <label>Film</label>
+                <br />
+
+                <input value="@Model.FilmIme" disabled />
+                <input hidden asp-for="ProjekcijaID"/>
+            </div>
+            <br />
+            <div class="zakazivanje-komponenta">
+                <label>Vrijeme</label> <br /><input type="time" asp-for="Vrijeme" />
+                <span asp-validation-for="Vrijeme" class="text-danger"></span>
+            </div>
+            <div class="zakazivanje-komponenta">
+                <select asp-for="SalaID" asp-items="Model.Sale">
+
+                </select>
+            </div>
+            <div class="zakazivanje-komponenta" style="margin-top: 60px">
+                <input type="checkbox" asp-for="Covid19" /> COVID-19 mjere
+            </div>
+        </div>
+
+        <div class="zakazivanje-komponenta">
+            <label id="zakazivanje-datum-od">Datum</label>
+            <br />
+            <input id="datumOdabir" type="date" asp-for="Datum" />
+            
+            <br/>
+            <label>Cijena</label>
+            <br />
+            <input type="text" asp-for="Cijena" />
+            
+            <div class="zakazivanje-komponenta" style="margin-top: 70px">
+                <button type="submit" id="film-zakazi-btn">Sačuvaj promjene</button>
+            </div>
+        </div>
+
+       
+    </div>
+</form>
+
+
+
+

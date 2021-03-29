@@ -1,0 +1,80 @@
+﻿
+@{
+    ViewData["Title"] = "Dodaj projekcije";
+    Layout = "_LayoutAdmin";
+}
+@model ProjekcijeDodajVM
+
+<form asp-action="Snimi" asp-controller="Projekcije">
+    <div id="zakazivanje-container-slika">
+        <img src="https://gooloc.com/wp-content/uploads/vector/36/rnoquhaqlke.jpg" />
+        <br />
+        <h2></h2>
+    </div>
+    <div id="zakazivanje-container-opcije">
+        <div>
+            <div class="zakazivanje-komponenta">
+                <label>Film</label>
+                <br />
+                <select class="film-select"
+                        asp-for="FilmId"
+                        asp-items="Model.Filmovi"
+                        onchange="prikaziNazivFilma()">
+                    <option selected disabled hidden>Odaberi film</option>
+                </select>
+                <span asp-validation-for="Filmovi" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="zakazivanje-komponenta">
+                <label>Vrijeme</label> <br /><input type="time" asp-for="Vrijeme"/>
+                <span asp-validation-for="Vrijeme" class="text-danger"></span>
+            </div>
+            <div class="zakazivanje-komponenta">
+                @for (int i = 0; i < Model.Sale.Count; i++)
+                {
+                    <input type="checkbox" asp-for="@Model.Sale[i].Selected" />
+                    <label asp-for="@Model.Sale[i].Selected">Sala @Model.Sale[i].Ime</label>
+                    <input type="hidden" asp-for="@Model.Sale[i].SalaID" />
+                    <br />
+                }
+            </div>
+            <div class="zakazivanje-komponenta" style="margin-top: 60px">
+                <input type="checkbox" asp-for="Covid19" /> COVID-19 mjere
+            </div>
+        </div>
+        <div>
+            <div class="zakazivanje-komponenta">
+                <input type="radio"
+                       value="1"
+                       asp-for="MetodaZakazivanja"
+                       checked
+                       onclick="omoguciKrajnjiDatum()" />
+                Zakaži svaki dan<br />
+                <input type="radio"
+                       value="7"
+                       asp-for="MetodaZakazivanja"
+                       onclick="omoguciKrajnjiDatum()" />
+                Zakaži svakih 7 dana<br />
+                <input id="radio-za-danas"
+                       type="radio"
+                       asp-for="MetodaZakazivanja"
+                       value="1"
+                       onclick="omoguciKrajnjiDatum()" />
+                Zakaži samo jedan dan
+            </div>
+            <div class="zakazivanje-komponenta">
+                <label id="zakazivanje-datum-od">Od</label>
+                <br />
+                <input id="datumOdabir" type="date" asp-for="DatumOd" onchange="provjeriDatumDo()"/>
+            </div>
+            <div class="zakazivanje-komponenta" id="krajnji-datum-div">
+                <label>Do</label>
+                <br />
+                <input id="krajnji-datum" type="date" asp-for="DatumDo" min="@DateTime.Now.Date.ToString("yyyy-mm-dd")"/>
+            </div>
+            <div class="zakazivanje-komponenta" style="margin-top: 70px">
+                <button type="submit" id="film-zakazi-btn">Zakaži</button>
+            </div>
+        </div>
+    </div>
+</form>

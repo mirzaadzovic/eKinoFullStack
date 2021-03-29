@@ -1,0 +1,17 @@
+﻿
+@{
+    ViewData["Title"] = "Filmovi";
+    Layout = "_LayoutAdmin";
+}
+@model int 
+
+<script>
+    getFilms(@Model);
+    function getFilms(ID) {
+        let url = "/Filmovi/Prikaz?ID=" + ID;
+            $.get(url, function (data) {
+                $(".zakazivanje-container").html(data);
+            });
+    }
+</script>
+
