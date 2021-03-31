@@ -1,0 +1,46 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model SjedisteTipRezervacijeVM
+<form>
+    <div class="payment-container">
+        <h2 style="padding: 30px; background: transparent">
+            Odaberite tip rezervacije
+        </h2>
+        <div class="payment-container-inputs">
+            <div>
+                @foreach(var s in Model.Sjedista)
+                {
+                    <label>@s.Opis</label>
+                    <input value="@s.SjedisteID" hidden/>
+                    <br />
+                 }
+            </div>
+            <div>
+                @for (int i=0; i<Model.Sjedista.Count; i++)
+                {
+                    <select>
+                        @foreach(var tr in Model.TipoviRezervacije)
+                        {
+                            <option value="@tr.TipId">@tr.Opis</option>
+                        }
+                    </select>
+                    <br />
+                }
+
+            </div>
+        </div>
+       
+
+      
+        <div id="pay-method-ukupno">
+            Ukupno za platiti: <span id="pay-method-span"></span>.00 KM
+        </div>
+        <div id="pay-dugmad">
+            <button id="btn-nazad" onclick="nazad()">Nazad</button>
+            <button id="btn-blocked">Plati</button>
+        </div>
+    </div>
+</form>

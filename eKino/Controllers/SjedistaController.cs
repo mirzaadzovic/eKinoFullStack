@@ -99,6 +99,31 @@ namespace eKino.Controllers
             };
             return PartialView(model);
         }
+        public IActionResult TipRezervacije(int TerminID, int[] sjedista)
+        {
+            var model = new SjedisteTipRezervacijeVM()
+            {
+                TerminId = TerminID
+            };
+            model.Sjedista = _db.Sjediste.Select(s => new SjedisteTipRezervacijeVM.SjedistaVM()
+            {
+                SjedisteID=s.ID,
+                Opis=s.RedOznaka+" "+s.KolonaOznaka.ToString()
+            }).Where(s=>sjedista.Contains(s.SjedisteID))
+            .OrderBy(tr=>tr.Opis)
+            .ToList();
+
+            model.TipoviRezervacije = _db.TipRezervacije
+                .Select(ts=>new SjedisteTipRezervacijeVM.Row() 
+                { 
+                    TipId=ts.ID,
+                    Opis=ts.TipNaziv,
+                    Popust=ts.Popust
+                })
+                .ToList();
+            return PartialView(model);
+        }
+
         public IActionResult Snimi(int TerminID, int[] sjedista)
         {
             foreach(var s in sjedista)

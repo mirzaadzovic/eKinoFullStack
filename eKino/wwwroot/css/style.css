@@ -411,7 +411,7 @@ header {
 }
 
 .seats-container,
-#payment-container {
+.payment-container {
     transition: 0.8s;
     background: linear-gradient( 180deg, rgba(32, 35, 42, 1) 0%, rgba(49, 58, 78, 1) 55%, rgb(65, 95, 160) 100% );
     border: 8px solid #acbebecc;
@@ -427,6 +427,9 @@ header {
     border-top-right-radius: 60px;
     border-bottom-right-radius: 20px;
     color: #f4eade;
+}
+.payment-container-inputs{
+    display: flex;
 }
 
 #payment-container {
