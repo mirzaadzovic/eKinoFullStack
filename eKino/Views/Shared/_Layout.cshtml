@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - eKino</title>
+    <title>eKino</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-mini.css" />
     <link rel="stylesheet" href="~/css/style.css" />
 
@@ -22,11 +22,11 @@
         <div class="meni">
             <a href="/Home/Index" class="navbar-element" @*id="navbar-active"*@>POČETNA</a>
             <a href="/Home/Filmovi">FILMOVI</a>
-            <a href="#">NAJAVE</a>
             <a href="/Home/Vijesti">VIJESTI</a>
-            <a href="#">KONTAKT</a>
+            <a href="/api/rezervacije">REZERVACIJE</a>
             @if (SignInManager.IsSignedIn(User) && !UserManager.GetUserAsync(User).Result.IsPosjetilac)
             {
+                @*<a href="/api/rezervacije/@UserManager.GetUserAsync(User).Result.Id">REZERVACIJE</a>*@
                 <a href="/Admin/Index">ADMIN</a>
             }
 
@@ -55,5 +55,11 @@
 
         <script src="~/lib/signalr/dist/browser/signalr.js"></script>
         <script src="~/js/notifikacije.js"></script>
+        @*<script>
+        var user=@UserManager.GetUserAsync(User).Result.IdId;
+            if (user) {
+                window.sessionStorage("eKinoID", user);
+        }
+        </script>*@
 </body>
 </html>

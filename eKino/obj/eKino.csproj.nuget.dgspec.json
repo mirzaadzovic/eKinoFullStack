@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\0FIT\\RS1\\eKino\\eKino\\eKino.csproj": {}
+    "D:\\0FIT\\RS1\\eKino FINALNO\\webapp\\eKino\\eKino.csproj": {}
   },
   "projects": {
-    "D:\\0FIT\\RS1\\eKino\\eKino\\eKino.csproj": {
+    "D:\\0FIT\\RS1\\eKino FINALNO\\webapp\\eKino\\eKino.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\0FIT\\RS1\\eKino\\eKino\\eKino.csproj",
+        "projectUniqueName": "D:\\0FIT\\RS1\\eKino FINALNO\\webapp\\eKino\\eKino.csproj",
         "projectName": "eKino",
-        "projectPath": "D:\\0FIT\\RS1\\eKino\\eKino\\eKino.csproj",
+        "projectPath": "D:\\0FIT\\RS1\\eKino FINALNO\\webapp\\eKino\\eKino.csproj",
         "packagesPath": "C:\\Users\\KatarzaGautama\\.nuget\\packages\\",
-        "outputPath": "D:\\0FIT\\RS1\\eKino\\eKino\\obj\\",
+        "outputPath": "D:\\0FIT\\RS1\\eKino FINALNO\\webapp\\eKino\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -31,8 +31,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "D:\\0FIT\\RS1\\eKino\\Podaci\\Podaci.csproj": {
-                "projectPath": "D:\\0FIT\\RS1\\eKino\\Podaci\\Podaci.csproj"
+              "D:\\0FIT\\RS1\\eKino FINALNO\\webapp\\Podaci\\Podaci.csproj": {
+                "projectPath": "D:\\0FIT\\RS1\\eKino FINALNO\\webapp\\Podaci\\Podaci.csproj"
               }
             }
           }
@@ -58,6 +58,10 @@
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
               "version": "[3.1.10, )"
+            },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.0.0, )"
             },
             "Microsoft.AspNetCore.SignalR": {
               "target": "Package",
@@ -96,18 +100,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.206\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\0FIT\\RS1\\eKino\\Podaci\\Podaci.csproj": {
+    "D:\\0FIT\\RS1\\eKino FINALNO\\webapp\\Podaci\\Podaci.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\0FIT\\RS1\\eKino\\Podaci\\Podaci.csproj",
+        "projectUniqueName": "D:\\0FIT\\RS1\\eKino FINALNO\\webapp\\Podaci\\Podaci.csproj",
         "projectName": "Podaci",
-        "projectPath": "D:\\0FIT\\RS1\\eKino\\Podaci\\Podaci.csproj",
+        "projectPath": "D:\\0FIT\\RS1\\eKino FINALNO\\webapp\\Podaci\\Podaci.csproj",
         "packagesPath": "C:\\Users\\KatarzaGautama\\.nuget\\packages\\",
-        "outputPath": "D:\\0FIT\\RS1\\eKino\\Podaci\\obj\\",
+        "outputPath": "D:\\0FIT\\RS1\\eKino FINALNO\\webapp\\Podaci\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -171,14 +175,11 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.206\\RuntimeIdentifierGraph.json"
         }
       }
     }

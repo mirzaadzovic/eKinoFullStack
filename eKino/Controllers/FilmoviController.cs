@@ -11,6 +11,7 @@ namespace eKino.Controllers
 {
     public class FilmoviController : Controller
     {
+
         private ApplicationDbContext _db;
         public FilmoviController(ApplicationDbContext db)
         {
