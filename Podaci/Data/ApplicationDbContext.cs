@@ -28,6 +28,7 @@ namespace eKino.Data
         public DbSet<TipRezervacije> TipRezervacije { get; set; }
         public DbSet<Vijest> Vijest { get; set; }
         public DbSet<Sugestija> Sugestija { get; set; }
+        public DbSet<Korisnik> Korisnik { get; set; }
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{
         //    base.OnModelCreating(modelBuilder);

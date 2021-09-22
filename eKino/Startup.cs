@@ -35,6 +35,18 @@ namespace eKino
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<Korisnik>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    //builder => builder.WithOrigins("http://localhost:44319", "http://localhost:3000", "https://p2072.app.fit.ba", "https://api.p2072.app.fit.ba"));
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                    });
+
+            });
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(options => options.
                 SerializerSettings.
@@ -61,7 +73,7 @@ namespace eKino
             app.UseStaticFiles();
 
             app.UseRouting();
-         
+            app.UseCors();
             app.UseAuthentication();
             app.UseAuthorization();
 

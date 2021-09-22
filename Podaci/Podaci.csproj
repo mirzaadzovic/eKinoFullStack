@@ -21,6 +21,10 @@
     <Compile Include="Migrations\20210120150509_vijesti.Designer.cs" />
     <Compile Include="Migrations\20210120152233_vijestID ispravljen int u string.cs" />
     <Compile Include="Migrations\20210120152233_vijestID ispravljen int u string.Designer.cs" />
+    <Compile Include="Migrations\20210921220651_dodane Sugestije.cs" />
+    <Compile Include="Migrations\20210921220651_dodane Sugestije.Designer.cs" />
+    <Compile Include="Migrations\20210921221540_dodane Sugestije - string ID.cs" />
+    <Compile Include="Migrations\20210921221540_dodane Sugestije - string ID.Designer.cs" />
     <Compile Include="Migrations\ApplicationDbContextModelSnapshot.cs" />
   </ItemGroup>
 	<ItemGroup>

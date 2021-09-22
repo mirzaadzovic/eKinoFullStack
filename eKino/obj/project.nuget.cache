@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "HXCBcq+q+IYBMcUmYpzgaGkNC9T4gDyL9xGoPYwFISen9v/harVaTJj97NUamdHhUsiAAgZ/22B/fTSVzlEk1Q==",
+  "dgSpecHash": "65cmFg0331u25de60j+B2tDl+BLaaefn8mZz6p/YmqAWi5ZyKVOiFu798ibhwo7Mr2fTIIKapGhWlHwWn9QsNw==",
   "success": true,
   "projectFilePath": "D:\\0FIT\\RS1\\eKino FINALNO\\webapp\\eKino\\eKino.csproj",
   "expectedPackageFiles": [
@@ -8,6 +8,7 @@
     "C:\\Users\\KatarzaGautama\\.nuget\\packages\\microsoft.aspnetcore.authorization\\2.2.0\\microsoft.aspnetcore.authorization.2.2.0.nupkg.sha512",
     "C:\\Users\\KatarzaGautama\\.nuget\\packages\\microsoft.aspnetcore.authorization.policy\\2.2.0\\microsoft.aspnetcore.authorization.policy.2.2.0.nupkg.sha512",
     "C:\\Users\\KatarzaGautama\\.nuget\\packages\\microsoft.aspnetcore.connections.abstractions\\2.2.0\\microsoft.aspnetcore.connections.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\KatarzaGautama\\.nuget\\packages\\microsoft.aspnetcore.cors\\2.2.0\\microsoft.aspnetcore.cors.2.2.0.nupkg.sha512",
     "C:\\Users\\KatarzaGautama\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.1.10\\microsoft.aspnetcore.cryptography.internal.3.1.10.nupkg.sha512",
     "C:\\Users\\KatarzaGautama\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.1.10\\microsoft.aspnetcore.cryptography.keyderivation.3.1.10.nupkg.sha512",
     "C:\\Users\\KatarzaGautama\\.nuget\\packages\\microsoft.aspnetcore.diagnostics.entityframeworkcore\\3.1.8\\microsoft.aspnetcore.diagnostics.entityframeworkcore.3.1.8.nupkg.sha512",

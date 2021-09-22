@@ -9,7 +9,7 @@ namespace Podaci.EntityModels
         public int SugestijaID { get; set; }
         public string Tekst { get; set; }
         public DateTime Datum { get; set; }
-        public int KorisnikID { get; set; }
+        public string KorisnikID { get; set; }
         public Korisnik Korisnik { get; set; }
     }
 }

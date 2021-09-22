@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using eKino.Data;
 
 namespace Podaci.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210921220651_dodane Sugestije")]
+    partial class dodaneSugestije
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -401,7 +403,10 @@ namespace Podaci.Migrations
                     b.Property<DateTime>("Datum")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("KorisnikID")
+                    b.Property<int>("KorisnikID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("KorisnikId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Tekst")
@@ -409,7 +414,7 @@ namespace Podaci.Migrations
 
                     b.HasKey("SugestijaID");
 
-                    b.HasIndex("KorisnikID");
+                    b.HasIndex("KorisnikId");
 
                     b.ToTable("Sugestija");
                 });
@@ -586,7 +591,7 @@ namespace Podaci.Migrations
                 {
                     b.HasOne("Podaci.EntityModels.Korisnik", "Korisnik")
                         .WithMany()
-                        .HasForeignKey("KorisnikID");
+                        .HasForeignKey("KorisnikId");
                 });
 
             modelBuilder.Entity("Podaci.EntityModels.Vijest", b =>
