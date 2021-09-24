@@ -23,16 +23,13 @@
             <a href="/Home/Index" class="navbar-element" @*id="navbar-active"*@>POČETNA</a>
             <a href="/Home/Filmovi">FILMOVI</a>
             <a href="/Home/Vijesti">VIJESTI</a>
+            <a href="https://sugestije.p2072.app.fit.ba/">SUGESTIJE</a>
             @if (SignInManager.IsSignedIn(User) && !UserManager.GetUserAsync(User).Result.IsPosjetilac)
             {
-                <a href="/api/sugestije/@UserManager.GetUserAsync(User).Result.Id">SUGESTIJE</a>
-                @*<a href="/api/rezervacije/@UserManager.GetUserAsync(User).Result.Id">REZERVACIJE</a>*@
-                <a href="/Admin/Index">ADMIN</a>
+            @*<a href="/api/rezervacije/@UserManager.GetUserAsync(User).Result.Id">REZERVACIJE</a>*@
+            <a href="/Admin/Index">ADMIN</a>
             }
-            else
-            {
-                <a href="/api/sugestije/">SUGESTIJE</a>
-            }
+
 
         </div>
         <partial name="_LoginPartial" />

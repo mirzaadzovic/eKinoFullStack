@@ -162,8 +162,9 @@ namespace eKino.Controllers
             }
             _db.SaveChanges();
 
-            string poruka = "Dodana projekcija!";
-            _hubContext.Clients.All.SendAsync("prijemNotifikacije", poruka);
+            //Film film = _db.Film.Find(model.FilmID);
+            //string poruka = "Dodana projekcija!";
+            //_hubContext.Clients.All.SendAsync("prijemNotifikacije", poruka);
 
             return View();
         }
@@ -186,7 +187,8 @@ namespace eKino.Controllers
             _db.Remove(projekcija);
             _db.SaveChanges();
 
-            string poruka = "Promijenjen termin projekcije!";
+            Film film = _db.Film.Find(projekcija.FilmID);
+            string poruka = $"Otkazana projekcija filma {film.Naziv} dana {projekcija.Datum.ToString("d.M.yyyy")}. u {projekcija.Datum.ToString("HH:mm")}!";
             _hubContext.Clients.All.SendAsync("prijemNotifikacije", poruka);
 
             return Redirect("/Projekcije/Prikaz");

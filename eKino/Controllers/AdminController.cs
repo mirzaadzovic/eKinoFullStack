@@ -26,6 +26,10 @@ namespace eKino.Controllers
         }
         public IActionResult Index()
         {
+            var visitor = _userManager.GetUserAsync(User).Result;
+            if (!visitor.IsAdmin && !visitor.IsModerator)
+                return Forbid();
+
             Korisnik korisnik = _userManager.GetUserAsync(User).Result;
             if (korisnik.IsPosjetilac)
             {

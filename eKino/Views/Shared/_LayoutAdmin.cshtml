@@ -27,13 +27,12 @@
 
         <div class="meni">
             <a href="/Home/Index" class="navbar-element">POČETNA</a>
-            <a href="#">FILMOVI</a>
-            <a href="#">NAJAVE</a>
+            <a href="/Home/Filmovi">FILMOVI</a>
             <a href="/Home/Vijesti">VIJESTI</a>
-            <a href="#">KONTAKT</a>
+            <a href="https://sugestije.p2072.app.fit.ba/">SUGESTIJE</a>
             @if (SignInManager.IsSignedIn(User) && !UserManager.GetUserAsync(User).Result.IsPosjetilac)
             {
-                <a href="/Admin/Index" id="navbar-active">ADMIN</a>
+            <a href="/Admin/Index" id="navbar-active">ADMIN</a>
             }
         </div>
         <partial name="_LoginPartial" />
