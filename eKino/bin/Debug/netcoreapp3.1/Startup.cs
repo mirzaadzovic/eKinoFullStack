@@ -37,15 +37,13 @@ namespace eKino
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddCors(options =>
             {
-                options.AddPolicy("MyPolicy",
-                    //builder => builder.WithOrigins("http://localhost:44319", "http://localhost:3000", "https://p2072.app.fit.ba", "https://api.p2072.app.fit.ba"));
+                options.AddPolicy("MyPolicy",                 
                     builder =>
                     {
                         builder.AllowAnyOrigin()
                         .AllowAnyMethod()
                         .AllowAnyHeader();
                     });
-
             });
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(options => options.

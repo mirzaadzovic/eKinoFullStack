@@ -70,14 +70,21 @@ namespace eKino.Controllers
             return nova;
         }
         [HttpPut]
-        public Sugestija Put(int id, Sugestija sugestija)
+        public SugestijaModel Put(int id, SugestijaPost sugestija)
         {
             var sugestijaOld = _context.Sugestija.Find(id);
-            sugestijaOld.Tekst = sugestija.Tekst;
+            sugestijaOld.Tekst = sugestija.Sugestija;
             sugestijaOld.Datum = DateTime.Now;
 
             _context.SaveChanges();
-            return sugestija;
+            SugestijaModel nova = new SugestijaModel()
+            {
+                id = sugestijaOld.SugestijaID,
+                Korisnik = sugestija.Korisnik,
+                Datum = sugestijaOld.Datum.ToString("dd/MM/yyyy"),
+                Sugestija =sugestija.Sugestija
+            };
+            return nova;
         }
         [HttpDelete]
         public void Delete(int id)
